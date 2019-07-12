@@ -1,0 +1,425 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		ED09D05222CCDF5A003596D3 /* BG2DrawableItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED09D05122CCDF5A003596D3 /* BG2DrawableItem.swift */; };
+		ED09D05622CCF93E003596D3 /* ShaderCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = ED09D05522CCF754003596D3 /* ShaderCommon.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		ED0B538622D4DB210022E49E /* BG2CameraComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0B538522D4DB210022E49E /* BG2CameraComponent.swift */; };
+		ED0FECB922CA0D8D0085AEA0 /* BG2ModelLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0FECB822CA0D8D0085AEA0 /* BG2ModelLoad.swift */; };
+		ED411CF722D6268600E02D8F /* BG2Light.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED411CF622D6268600E02D8F /* BG2Light.swift */; };
+		ED64500D22D86ADC00C68228 /* BG2LightComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED64500C22D86ADC00C68228 /* BG2LightComponent.swift */; };
+		ED64500F22D873AB00C68228 /* BG2DrawableComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED64500E22D873AB00C68228 /* BG2DrawableComponent.swift */; };
+		EDAFCD4922C7903300C3D128 /* bg2e_mac.h in Headers */ = {isa = PBXBuildFile; fileRef = EDAFCD4722C7903300C3D128 /* bg2e_mac.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EDAFCD6C22C791E300C3D128 /* BG2Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDAFCD6B22C791E300C3D128 /* BG2Renderer.swift */; };
+		EDAFCD7522C7977900C3D128 /* MathExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDAFCD7422C7977900C3D128 /* MathExtensions.swift */; };
+		EDAFCD7722C79A0400C3D128 /* BG2SceneObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDAFCD7622C79A0400C3D128 /* BG2SceneObject.swift */; };
+		EDAFCD7B22C79A2700C3D128 /* BG2SceneComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDAFCD7A22C79A2700C3D128 /* BG2SceneComponent.swift */; };
+		EDAFCD7D22C79A9100C3D128 /* BG2TransformComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDAFCD7C22C79A9100C3D128 /* BG2TransformComponent.swift */; };
+		EDAFCD8322C7D42700C3D128 /* Shader.metal in Sources */ = {isa = PBXBuildFile; fileRef = EDAFCD8222C7D42700C3D128 /* Shader.metal */; };
+		EDC5475522C8E43600233D4C /* BG2Material.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC5475422C8E43600233D4C /* BG2Material.swift */; };
+		EDCA9C0B22C8A745001ED7C9 /* BG2PolyList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCA9C0A22C8A745001ED7C9 /* BG2PolyList.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		ED09D05122CCDF5A003596D3 /* BG2DrawableItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BG2DrawableItem.swift; sourceTree = "<group>"; };
+		ED09D05522CCF754003596D3 /* ShaderCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShaderCommon.h; sourceTree = "<group>"; };
+		ED0B538522D4DB210022E49E /* BG2CameraComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BG2CameraComponent.swift; sourceTree = "<group>"; };
+		ED0FECB822CA0D8D0085AEA0 /* BG2ModelLoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BG2ModelLoad.swift; sourceTree = "<group>"; };
+		ED411CF622D6268600E02D8F /* BG2Light.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BG2Light.swift; sourceTree = "<group>"; };
+		ED64500C22D86ADC00C68228 /* BG2LightComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BG2LightComponent.swift; sourceTree = "<group>"; };
+		ED64500E22D873AB00C68228 /* BG2DrawableComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BG2DrawableComponent.swift; sourceTree = "<group>"; };
+		EDAFCD4422C7903300C3D128 /* bg2e_mac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = bg2e_mac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDAFCD4722C7903300C3D128 /* bg2e_mac.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bg2e_mac.h; sourceTree = "<group>"; };
+		EDAFCD4822C7903300C3D128 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EDAFCD6B22C791E300C3D128 /* BG2Renderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BG2Renderer.swift; sourceTree = "<group>"; };
+		EDAFCD7422C7977900C3D128 /* MathExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathExtensions.swift; sourceTree = "<group>"; };
+		EDAFCD7622C79A0400C3D128 /* BG2SceneObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BG2SceneObject.swift; sourceTree = "<group>"; };
+		EDAFCD7A22C79A2700C3D128 /* BG2SceneComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BG2SceneComponent.swift; sourceTree = "<group>"; };
+		EDAFCD7C22C79A9100C3D128 /* BG2TransformComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BG2TransformComponent.swift; sourceTree = "<group>"; };
+		EDAFCD8222C7D42700C3D128 /* Shader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shader.metal; sourceTree = "<group>"; };
+		EDC5475422C8E43600233D4C /* BG2Material.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BG2Material.swift; sourceTree = "<group>"; };
+		EDCA9C0A22C8A745001ED7C9 /* BG2PolyList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BG2PolyList.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EDAFCD4122C7903300C3D128 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EDAFCD3A22C7903300C3D128 = {
+			isa = PBXGroup;
+			children = (
+				EDAFCD4622C7903300C3D128 /* bg2e-mac */,
+				EDAFCD4522C7903300C3D128 /* Products */,
+				EDAFCD7222C7960000C3D128 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		EDAFCD4522C7903300C3D128 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EDAFCD4422C7903300C3D128 /* bg2e_mac.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EDAFCD4622C7903300C3D128 /* bg2e-mac */ = {
+			isa = PBXGroup;
+			children = (
+				EDAFCD8122C7D40500C3D128 /* Source */,
+				EDAFCD8022C7D3FE00C3D128 /* Shaders */,
+				EDAFCD4722C7903300C3D128 /* bg2e_mac.h */,
+				EDAFCD4822C7903300C3D128 /* Info.plist */,
+			);
+			path = "bg2e-mac";
+			sourceTree = "<group>";
+		};
+		EDAFCD7222C7960000C3D128 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EDAFCD8022C7D3FE00C3D128 /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				EDAFCD8222C7D42700C3D128 /* Shader.metal */,
+				ED09D05522CCF754003596D3 /* ShaderCommon.h */,
+			);
+			path = Shaders;
+			sourceTree = "<group>";
+		};
+		EDAFCD8122C7D40500C3D128 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				EDAFCD6B22C791E300C3D128 /* BG2Renderer.swift */,
+				EDAFCD7422C7977900C3D128 /* MathExtensions.swift */,
+				EDAFCD7622C79A0400C3D128 /* BG2SceneObject.swift */,
+				EDAFCD7A22C79A2700C3D128 /* BG2SceneComponent.swift */,
+				EDAFCD7C22C79A9100C3D128 /* BG2TransformComponent.swift */,
+				EDCA9C0A22C8A745001ED7C9 /* BG2PolyList.swift */,
+				EDC5475422C8E43600233D4C /* BG2Material.swift */,
+				ED0FECB822CA0D8D0085AEA0 /* BG2ModelLoad.swift */,
+				ED09D05122CCDF5A003596D3 /* BG2DrawableItem.swift */,
+				ED0B538522D4DB210022E49E /* BG2CameraComponent.swift */,
+				ED411CF622D6268600E02D8F /* BG2Light.swift */,
+				ED64500C22D86ADC00C68228 /* BG2LightComponent.swift */,
+				ED64500E22D873AB00C68228 /* BG2DrawableComponent.swift */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		EDAFCD3F22C7903300C3D128 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED09D05622CCF93E003596D3 /* ShaderCommon.h in Headers */,
+				EDAFCD4922C7903300C3D128 /* bg2e_mac.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		EDAFCD4322C7903300C3D128 /* bg2e-mac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EDAFCD4C22C7903300C3D128 /* Build configuration list for PBXNativeTarget "bg2e-mac" */;
+			buildPhases = (
+				EDAFCD3F22C7903300C3D128 /* Headers */,
+				EDAFCD4022C7903300C3D128 /* Sources */,
+				EDAFCD4122C7903300C3D128 /* Frameworks */,
+				EDAFCD4222C7903300C3D128 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "bg2e-mac";
+			productName = "bg2e-mac";
+			productReference = EDAFCD4422C7903300C3D128 /* bg2e_mac.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EDAFCD3B22C7903300C3D128 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1100;
+				ORGANIZATIONNAME = "Fernando Serrano Carpena";
+				TargetAttributes = {
+					EDAFCD4322C7903300C3D128 = {
+						CreatedOnToolsVersion = 11.0;
+						LastSwiftMigration = 1100;
+					};
+				};
+			};
+			buildConfigurationList = EDAFCD3E22C7903300C3D128 /* Build configuration list for PBXProject "bg2e-mac" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EDAFCD3A22C7903300C3D128;
+			productRefGroup = EDAFCD4522C7903300C3D128 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EDAFCD4322C7903300C3D128 /* bg2e-mac */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EDAFCD4222C7903300C3D128 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EDAFCD4022C7903300C3D128 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED0FECB922CA0D8D0085AEA0 /* BG2ModelLoad.swift in Sources */,
+				EDAFCD6C22C791E300C3D128 /* BG2Renderer.swift in Sources */,
+				EDAFCD7D22C79A9100C3D128 /* BG2TransformComponent.swift in Sources */,
+				EDAFCD7B22C79A2700C3D128 /* BG2SceneComponent.swift in Sources */,
+				ED64500D22D86ADC00C68228 /* BG2LightComponent.swift in Sources */,
+				ED09D05222CCDF5A003596D3 /* BG2DrawableItem.swift in Sources */,
+				EDC5475522C8E43600233D4C /* BG2Material.swift in Sources */,
+				EDAFCD7722C79A0400C3D128 /* BG2SceneObject.swift in Sources */,
+				ED0B538622D4DB210022E49E /* BG2CameraComponent.swift in Sources */,
+				EDCA9C0B22C8A745001ED7C9 /* BG2PolyList.swift in Sources */,
+				EDAFCD8322C7D42700C3D128 /* Shader.metal in Sources */,
+				ED64500F22D873AB00C68228 /* BG2DrawableComponent.swift in Sources */,
+				ED411CF722D6268600E02D8F /* BG2Light.swift in Sources */,
+				EDAFCD7522C7977900C3D128 /* MathExtensions.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		EDAFCD4A22C7903300C3D128 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		EDAFCD4B22C7903300C3D128 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		EDAFCD4D22C7903300C3D128 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = RP926KEE5K;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "bg2e-mac/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.bg2engine.bg2e-mac";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		EDAFCD4E22C7903300C3D128 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = RP926KEE5K;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "bg2e-mac/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.bg2engine.bg2e-mac";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EDAFCD3E22C7903300C3D128 /* Build configuration list for PBXProject "bg2e-mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDAFCD4A22C7903300C3D128 /* Debug */,
+				EDAFCD4B22C7903300C3D128 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EDAFCD4C22C7903300C3D128 /* Build configuration list for PBXNativeTarget "bg2e-mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDAFCD4D22C7903300C3D128 /* Debug */,
+				EDAFCD4E22C7903300C3D128 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EDAFCD3B22C7903300C3D128 /* Project object */;
+}
