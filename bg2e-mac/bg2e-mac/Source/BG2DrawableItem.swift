@@ -11,12 +11,6 @@ import simd
 
 public class BG2DrawableItem {
     private var renderer: BG2Renderer
-
-    private lazy var uniforms: Uniforms = {
-        var u = Uniforms()
-        u.modelMatrix = matrix_identity_float4x4
-        return u
-    }()
     
     public var polyList: BG2PolyList
     public var material: BG2Material
@@ -64,15 +58,15 @@ public class BG2DrawableItem {
         return plState
     }()
     
-    public func draw(fromCamera camera: BG2CameraComponent, renderEncoder: MTLRenderCommandEncoder) {
+    public func draw(viewMatrix: matrix_float4x4, projectionMatrix: matrix_float4x4, renderEncoder: MTLRenderCommandEncoder) {
         renderEncoder.setRenderPipelineState(pipelineState)
-        uniforms.modelMatrix = self.transform
-        uniforms.viewMatrix = camera.view
-        uniforms.projectionMatrix = camera.projection
-        uniforms.normalMatrix = matrix_float3x3.init(normalFrom4x4: self.transform)
+        var uniforms = MatrixState(model: self.transform,
+                                   view: viewMatrix,
+                                   projection: projectionMatrix,
+                                   normal: matrix_float3x3.init(normalFrom4x4: self.transform))
         
         renderEncoder.setVertexBytes(&uniforms,
-                                     length: MemoryLayout<Uniforms>.stride,
+                                     length: MemoryLayout<MatrixState>.stride,
                                      index: polyList.nextAvailableBufferIndex)
         renderEncoder.setFragmentTexture(self.material.albedoTexture, index: Int(0))
         

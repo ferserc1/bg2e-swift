@@ -9,7 +9,7 @@
 import Foundation
 
 public class BG2SceneObject {
-    private var renderer: BG2Renderer
+    public let renderer: BG2Renderer
     public var name: String = ""
     
     public init(withRenderer renderer: BG2Renderer, name: String = "") {
@@ -18,9 +18,15 @@ public class BG2SceneObject {
     }
     
     private var children: [BG2SceneObject] = []
-    private var parent: BG2SceneObject? = nil
+    private var parentInternal: BG2SceneObject? = nil
     private var componentIndex: [String:BG2SceneComponent] = [:]
     private var componentArray: [BG2SceneComponent] = []
+    
+    public var parent: BG2SceneObject? {
+        get {
+            return parentInternal
+        }
+    }
 }
 
 
@@ -33,6 +39,7 @@ public extension BG2SceneObject {
         }
         componentIndex[String(describing: comp.typeName)] = comp
         componentArray.append(comp)
+        comp.sceneObjectInternal = self
     }
     
     func removeComponent<T>(_ comp: T) {
@@ -41,6 +48,7 @@ public extension BG2SceneObject {
         else {
             return
         }
+        existingComp.sceneObjectInternal = nil
         componentArray.remove(at: index)
         componentIndex.removeValue(forKey: String(describing: comp.self))
     }
@@ -103,18 +111,63 @@ public extension BG2SceneObject {
 
 // Node hierarchy management functions
 public extension BG2SceneObject {
+
     func addChild(_ child: BG2SceneObject) {
-        if child.parent != nil {
-            child.parent?.removeChild(child)
+        if child.parentInternal != nil {
+            child.parentInternal?.removeChild(child)
         }
         children.append(child)
-        child.parent = self
+        child.parentInternal = self
     }
     
     func removeChild(_ child: BG2SceneObject) {
         if children.contains(child) {
             children.removeAll(where: { $0 == child })
-            child.parent = nil
+            child.parentInternal = nil
+        }
+    }
+    
+    func children(_ closure: (_ c: BG2SceneObject) -> Void) {
+        for child in children {
+            closure(child)
+        }
+    }
+    
+    func children(_ closure: (_ c: BG2SceneObject, _ index: Int) -> Void) {
+        for (index,child) in children.enumerated() {
+            closure(child,index)
+        }
+    }
+    
+    func someChild(_ closure: (_ c: BG2SceneObject) -> Bool) {
+        for child in children {
+            if closure(child) {
+                break
+            }
+        }
+    }
+    
+    func someChild(_ closure: (_ c: BG2SceneObject, _ index: Int) -> Bool) {
+        for (index,child) in children.enumerated() {
+            if closure(child,index) {
+                break
+            }
+        }
+    }
+    
+    func everyChild(_ closure: (_ c: BG2SceneObject) -> Bool) {
+        for child in children {
+            if closure(child) {
+                break
+            }
+        }
+    }
+    
+    func everyChild(_ closure: (_ c: BG2SceneObject, _ index: Int) -> Bool) {
+        for (index,child) in children.enumerated() {
+            if closure(child,index) {
+                break
+            }
         }
     }
 }

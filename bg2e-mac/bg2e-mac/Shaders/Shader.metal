@@ -26,11 +26,11 @@ struct VertexOut {
 };
 
 vertex VertexOut vertex_main(const VertexIn vertexIn [[ stage_in ]],
-                          constant Uniforms & mvp [[ buffer(5) ]]) {
+                          constant MatrixState & matrixState [[ buffer(5) ]]) {
     VertexOut result;
-    result.position = mvp.projectionMatrix * mvp.viewMatrix * mvp.modelMatrix * vertexIn.position;
+    result.position = matrixState.projection * matrixState.view * matrixState.model * vertexIn.position;
     
-    result.normal =  mvp.normalMatrix * normalize(vertexIn.normal);
+    result.normal =  matrixState.normal * normalize(vertexIn.normal);
     result.uv0 = vertexIn.uv0;
     return result;
 }

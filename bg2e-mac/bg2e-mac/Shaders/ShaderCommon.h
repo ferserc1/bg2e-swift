@@ -12,11 +12,11 @@
 #import <simd/simd.h>
 
 typedef struct {
-    matrix_float4x4 modelMatrix;
-    matrix_float4x4 viewMatrix;
-    matrix_float4x4 projectionMatrix;
-    matrix_float3x3 normalMatrix;
-} Uniforms;
+    matrix_float4x4 model;
+    matrix_float4x4 view;
+    matrix_float4x4 projection;
+    matrix_float3x3 normal;
+} MatrixState;
 
 typedef enum {
     DirectionalLightType = 4,

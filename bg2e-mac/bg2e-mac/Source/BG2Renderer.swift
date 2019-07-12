@@ -95,7 +95,9 @@ extension BG2Renderer: MTKViewDelegate {
         
         renderEncoder.setDepthStencilState(depthStencilState)
         
-        drawableItem.draw(fromCamera: camera, renderEncoder: renderEncoder)
+        drawableItem.draw(viewMatrix: camera.view,
+                          projectionMatrix: camera.projection,
+                          renderEncoder: renderEncoder)
 
         renderEncoder.endEncoding()
         
