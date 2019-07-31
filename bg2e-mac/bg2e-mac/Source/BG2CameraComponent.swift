@@ -11,20 +11,27 @@ import Foundation
 public class BG2CameraComponent : BG2SceneComponent {
     public var projection: float4x4 = matrix_identity_float4x4
     
-    // TODO: Calculate the view position using the position of the
-    // camera node in the scene graph
-    public var position: float4x4 = matrix_identity_float4x4
-    
     public var view: float4x4 {
         get {
-            return  self.position.inverse
-        }
-        set {
-            self.position = newValue.inverse
+            if let so = sceneObject {
+                let world = so.worldMatrix;
+                return world.inverse;
+            } else {
+                return matrix_identity_float4x4;
+            }
         }
     }
     
     public override init() {
         super.init()
+    }
+}
+
+// Scene object extensions
+public extension BG2SceneObject {
+    var camera: BG2CameraComponent? {
+        get {
+            return component(ofType: BG2CameraComponent.self) as? BG2CameraComponent
+        }
     }
 }

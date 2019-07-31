@@ -12,6 +12,7 @@
 		ED0FECC122CA10230085AEA0 /* test-shape.bg2 in Resources */ = {isa = PBXBuildFile; fileRef = ED0FECBC22CA10230085AEA0 /* test-shape.bg2 */; };
 		ED0FECC322CA10230085AEA0 /* texture_reflection_mask.png in Resources */ = {isa = PBXBuildFile; fileRef = ED0FECBE22CA10230085AEA0 /* texture_reflection_mask.png */; };
 		ED0FECC422CA10230085AEA0 /* texture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ED0FECBF22CA10230085AEA0 /* texture.jpg */; };
+		ED1BCDA422F169AE0069A091 /* RotatingComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1BCDA322F169AE0069A091 /* RotatingComponent.swift */; };
 		EDAFCD5C22C7905B00C3D128 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDAFCD5B22C7905B00C3D128 /* AppDelegate.swift */; };
 		EDAFCD5E22C7905B00C3D128 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDAFCD5D22C7905B00C3D128 /* Assets.xcassets */; };
 		EDAFCD6122C7905B00C3D128 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDAFCD5F22C7905B00C3D128 /* Main.storyboard */; };
@@ -40,6 +41,7 @@
 		ED0FECBC22CA10230085AEA0 /* test-shape.bg2 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "test-shape.bg2"; path = "../../../data/test-shape.bg2"; sourceTree = "<group>"; };
 		ED0FECBE22CA10230085AEA0 /* texture_reflection_mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = texture_reflection_mask.png; path = ../../../data/texture_reflection_mask.png; sourceTree = "<group>"; };
 		ED0FECBF22CA10230085AEA0 /* texture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = texture.jpg; path = ../../../data/texture.jpg; sourceTree = "<group>"; };
+		ED1BCDA322F169AE0069A091 /* RotatingComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RotatingComponent.swift; path = "../../../../../../System/Volumes/Data/Users/fernando/desarrollo/bg2e-swift/Mac Playground/Mac Playground/RotatingComponent.swift"; sourceTree = "<group>"; };
 		EDAFCD5822C7905B00C3D128 /* Mac Playground.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mac Playground.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDAFCD5B22C7905B00C3D128 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EDAFCD5D22C7905B00C3D128 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 				EDAFCD6222C7905B00C3D128 /* Info.plist */,
 				EDAFCD6322C7905B00C3D128 /* Mac_Playground.entitlements */,
 				EDAFCD6922C7909800C3D128 /* ViewController.swift */,
+				ED1BCDA322F169AE0069A091 /* RotatingComponent.swift */,
 			);
 			path = "Mac Playground";
 			sourceTree = "<group>";
@@ -190,6 +193,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EDAFCD6A22C7909800C3D128 /* ViewController.swift in Sources */,
+				ED1BCDA422F169AE0069A091 /* RotatingComponent.swift in Sources */,
 				EDAFCD5C22C7905B00C3D128 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

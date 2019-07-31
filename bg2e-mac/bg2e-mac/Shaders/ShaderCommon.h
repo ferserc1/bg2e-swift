@@ -21,7 +21,25 @@ typedef struct {
 typedef enum {
     DirectionalLightType = 4,
     SpotLightType = 1,
-    PointLightType = 5
+    PointLightType = 5,
+    DisabledLightType = 0
 } LightType;
+
+typedef struct {
+    vector_float3 position;
+    vector_float3 direction;
+    vector_float3 color;
+    vector_float3 specular;
+    float intensity;
+    vector_float3 attenuation;
+    LightType type;
+} PhongLight;
+
+typedef struct {
+    vector_float4 diffuse;
+    vector_float4 specular;
+    float shininess;
+    vector_float3 normal;
+} PhongMaterial;
 
 #endif /* ShaderCommon_h */

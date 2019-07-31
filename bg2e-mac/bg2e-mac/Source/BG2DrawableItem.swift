@@ -58,9 +58,10 @@ public class BG2DrawableItem {
         return plState
     }()
     
-    public func draw(viewMatrix: matrix_float4x4, projectionMatrix: matrix_float4x4, renderEncoder: MTLRenderCommandEncoder) {
+    public func draw(worldMatrix: matrix_float4x4, viewMatrix: matrix_float4x4, projectionMatrix: matrix_float4x4, renderEncoder: MTLRenderCommandEncoder) {
         renderEncoder.setRenderPipelineState(pipelineState)
-        var uniforms = MatrixState(model: self.transform,
+        let itemWorldMatrix = worldMatrix * self.transform
+        var uniforms = MatrixState(model: itemWorldMatrix,
                                    view: viewMatrix,
                                    projection: projectionMatrix,
                                    normal: matrix_float3x3.init(normalFrom4x4: self.transform))

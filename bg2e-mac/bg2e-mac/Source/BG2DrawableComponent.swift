@@ -17,7 +17,8 @@ public class BG2DrawableComponent: BG2SceneComponent {
     }
     
     // Life cycle functions
-    override func draw() {
+    open override func draw(viewMatrix: matrix_float4x4, projectionMatrix: matrix_float4x4, renderEncoder: MTLRenderCommandEncoder) {
+       
         let trx: matrix_float4x4
         if let sceneObject = self.sceneObject {
             trx = sceneObject.worldMatrix
@@ -25,7 +26,12 @@ public class BG2DrawableComponent: BG2SceneComponent {
             trx = matrix_identity_float4x4
         }
         
-        // TODO: Draw elements
+        for item in drawableItems {
+            item.draw(worldMatrix: trx,
+                      viewMatrix: viewMatrix,
+                      projectionMatrix: projectionMatrix,
+                      renderEncoder: renderEncoder)
+        }
     }
 }
 

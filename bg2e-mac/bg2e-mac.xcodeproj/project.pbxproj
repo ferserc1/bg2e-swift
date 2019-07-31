@@ -11,6 +11,7 @@
 		ED09D05622CCF93E003596D3 /* ShaderCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = ED09D05522CCF754003596D3 /* ShaderCommon.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		ED0B538622D4DB210022E49E /* BG2CameraComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0B538522D4DB210022E49E /* BG2CameraComponent.swift */; };
 		ED0FECB922CA0D8D0085AEA0 /* BG2ModelLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0FECB822CA0D8D0085AEA0 /* BG2ModelLoad.swift */; };
+		ED1BCDA622F198230069A091 /* Lighting.metal in Sources */ = {isa = PBXBuildFile; fileRef = ED1BCDA522F198230069A091 /* Lighting.metal */; };
 		ED411CF722D6268600E02D8F /* BG2Light.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED411CF622D6268600E02D8F /* BG2Light.swift */; };
 		ED64500D22D86ADC00C68228 /* BG2LightComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED64500C22D86ADC00C68228 /* BG2LightComponent.swift */; };
 		ED64500F22D873AB00C68228 /* BG2DrawableComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED64500E22D873AB00C68228 /* BG2DrawableComponent.swift */; };
@@ -30,6 +31,8 @@
 		ED09D05522CCF754003596D3 /* ShaderCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShaderCommon.h; sourceTree = "<group>"; };
 		ED0B538522D4DB210022E49E /* BG2CameraComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BG2CameraComponent.swift; sourceTree = "<group>"; };
 		ED0FECB822CA0D8D0085AEA0 /* BG2ModelLoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BG2ModelLoad.swift; sourceTree = "<group>"; };
+		ED1BCDA522F198230069A091 /* Lighting.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; name = Lighting.metal; path = "../../../../../../../System/Volumes/Data/Users/fernando/desarrollo/bg2e-swift/bg2e-mac/bg2e-mac/Shaders/Lighting.metal"; sourceTree = "<group>"; };
+		ED1BCDA722F198DC0069A091 /* Lighting.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Lighting.h; path = "../../../../../../../System/Volumes/Data/Users/fernando/desarrollo/bg2e-swift/bg2e-mac/bg2e-mac/Shaders/Lighting.h"; sourceTree = "<group>"; };
 		ED411CF622D6268600E02D8F /* BG2Light.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BG2Light.swift; sourceTree = "<group>"; };
 		ED64500C22D86ADC00C68228 /* BG2LightComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BG2LightComponent.swift; sourceTree = "<group>"; };
 		ED64500E22D873AB00C68228 /* BG2DrawableComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BG2DrawableComponent.swift; sourceTree = "<group>"; };
@@ -97,6 +100,8 @@
 			children = (
 				EDAFCD8222C7D42700C3D128 /* Shader.metal */,
 				ED09D05522CCF754003596D3 /* ShaderCommon.h */,
+				ED1BCDA522F198230069A091 /* Lighting.metal */,
+				ED1BCDA722F198DC0069A091 /* Lighting.h */,
 			);
 			path = Shaders;
 			sourceTree = "<group>";
@@ -208,6 +213,7 @@
 				EDAFCD7B22C79A2700C3D128 /* BG2SceneComponent.swift in Sources */,
 				ED64500D22D86ADC00C68228 /* BG2LightComponent.swift in Sources */,
 				ED09D05222CCDF5A003596D3 /* BG2DrawableItem.swift in Sources */,
+				ED1BCDA622F198230069A091 /* Lighting.metal in Sources */,
 				EDC5475522C8E43600233D4C /* BG2Material.swift in Sources */,
 				EDAFCD7722C79A0400C3D128 /* BG2SceneObject.swift in Sources */,
 				ED0B538622D4DB210022E49E /* BG2CameraComponent.swift in Sources */,

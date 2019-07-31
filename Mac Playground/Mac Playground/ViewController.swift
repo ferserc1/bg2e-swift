@@ -18,6 +18,9 @@ class ViewController: NSViewController {
     
     var scene: BG2SceneObject?
     
+    var lightTransform: BG2TransformComponent?
+    var timeToUpdate: Float = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,13 +46,13 @@ class ViewController: NSViewController {
         let camera = BG2CameraComponent()
         let aspect: Float = Float(view.bounds.size.width) / Float(view.bounds.size.height)
         camera.projection = float4x4.init(perspectiveFov: 45, near: 0.1, far: 100.0, aspect: aspect)
-        camera.position = float4x4.init(translate: SIMD3<Float>(0, 0, -3))
+        //camera.position = float4x4.init(translate: SIMD3<Float>(0, 0, -3))
         cameraNode.addComponent(camera)
         
-        renderer.setCamera(camera)
+        renderer.mainCamera = camera;
         
         var transform = BG2TransformComponent()
-        transform.matrix = matrix_float4x4.init(translate: SIMD3<Float>(0,0,3))
+        transform.matrix = matrix_float4x4.init(translate: SIMD3<Float>(0,0,-3))
         cameraNode.addComponent(transform)
         
         scene?.addChild(cameraNode)
@@ -63,13 +66,18 @@ class ViewController: NSViewController {
             matrix_float4x4.init(rotationX: Float(-55).degreesToRadians) *
             matrix_float4x4.init(translate: SIMD3<Float>(0,0,5))
         lightNode.addComponent(transform)
+        lightTransform = transform
         
         scene?.addChild(lightNode)
         
         let drawable = loadDrawable()
         let drawableNode = BG2SceneObject(withRenderer: renderer)
         drawableNode.addComponent(drawable)
+        drawableNode.addComponent(BG2TransformComponent())
+        drawableNode.addComponent(RotatingComponent())
         scene?.addChild(drawableNode)
+        
+        renderer.sceneRoot = scene
     }
     
     func loadDrawable() -> BG2DrawableComponent {
@@ -78,12 +86,6 @@ class ViewController: NSViewController {
             fatalError("Could not load drawable")
         }
         let model = BG2ModelLoad(contentsOfFile: url, renderer: renderer)
-        drawableItem = model.drawableItems[0]
-        if let drw = drawableItem {
-            drw.transform = matrix_float4x4(rotationY: Float(45).degreesToRadians)
-            renderer.setDrawableItem(drw)
-        }
-        
         let drawableComponent = BG2DrawableComponent()
         for item in model.drawableItems {
             drawableComponent.drawableItems.append(item)
@@ -94,10 +96,19 @@ class ViewController: NSViewController {
 
 extension ViewController: BG2RendererDelegate {
     func update(_ delta: Float) {
-        guard let drawableItem = drawableItem else {
+        //guard let drawableItem = drawableItem else {
+        //    return
+        //}
+        //drawableItem.transform *= matrix_float4x4(rotationY: Float(1).degreesToRadians)
+        guard let lightTransform = lightTransform else {
             return
         }
-        drawableItem.transform *= matrix_float4x4(rotationY: Float(1).degreesToRadians)
+        timeToUpdate += delta
+        if timeToUpdate > 2 {
+            print("Update");
+            timeToUpdate = 0
+            lightTransform.matrix = lightTransform.matrix * matrix_float4x4.init(rotationX: -0.1)
+        }
     }
     
     

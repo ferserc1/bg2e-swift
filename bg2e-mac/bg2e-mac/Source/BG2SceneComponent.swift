@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class BG2SceneComponent {
+open class BG2SceneComponent {
     public var typeName: String {
         get {
             return String(describing: type(of: self))
@@ -17,17 +17,16 @@ public class BG2SceneComponent {
     
     internal var sceneObjectInternal: BG2SceneObject? = nil
 
-    
     public init() {
         
     }
     
     // Life cycle functions
-    func update() {
+    open func update(delta: Float) {
         
     }
     
-    func draw() {
+    open func draw(viewMatrix: matrix_float4x4, projectionMatrix: matrix_float4x4, renderEncoder: MTLRenderCommandEncoder) {
         
     }
 }

@@ -9,6 +9,14 @@
 import Foundation
 
 public class BG2Light {
+    private var lightData: PhongLight = PhongLight()
+    
+    public var shaderLightData: PhongLight {
+        get {
+            return lightData
+        }
+    }
+    
     public enum LightType {
         case directionalLight
         case pointLight
@@ -16,14 +24,90 @@ public class BG2Light {
         case disabledLight
     };
     
-    public var lightType: LightType = .directionalLight
-    public var color: SIMD4<Float> = SIMD4<Float>(1,1,1,1)
-    public var intensity: Float = 1.0
-    public var attenuation: SIMD3<Float> = SIMD3<Float>(1,0.5,0.1)
-    public var position: SIMD3<Float> = SIMD3<Float>(0,0,0)
-    public var direction: SIMD3<Float> = SIMD3<Float>(0,0,1)
-    public var coneAngle: Float = Float(40).degreesToRadians
-    public var coneAttenuation: Float = 12
+    public init() {
+        lightData.color = SIMD3<Float>(1.0,1.0,1.0)
+        lightData.specular = SIMD3<Float>(1.0, 1.0, 1.0)
+        lightData.attenuation = SIMD3<Float>(1.0, 0.5, 0.1)
+        lightData.position = SIMD3<Float>(0.0, 0.0, 0.0)
+        lightData.direction = SIMD3<Float>(0.0, 0.0, 1.0)
+        lightData.intensity = 1.0;
+        lightData.type = DirectionalLightType
+    }
+}
+
+// Phong light properties
+public extension BG2Light {
+    var lightType: LightType {
+        get {
+            switch lightData.type {
+            case DirectionalLightType:
+                return .directionalLight
+            case PointLightType:
+                return .pointLight
+            case SpotLightType:
+                return .spotLight
+            default:
+                return .disabledLight
+            }
+        }
+        set {
+            switch newValue {
+            case .directionalLight:
+                lightData.type = DirectionalLightType
+            case .pointLight:
+                lightData.type = PointLightType
+            case .spotLight:
+                lightData.type = SpotLightType
+            default:
+                lightData.type = DisabledLightType
+            }
+        }
+    }
+    
+    var color: SIMD3<Float> {
+        get {
+            return lightData.color
+        }
+        set {
+            lightData.color = newValue
+        }
+    }
+        
+    var intensity: Float {
+        get {
+            return lightData.intensity
+        }
+        set {
+            lightData.intensity = newValue
+        }
+    }
+    
+    var attenuation: SIMD3<Float> {
+        get {
+            return lightData.attenuation
+        }
+        set {
+            lightData.attenuation = newValue
+        }
+    }
+
+    var position: SIMD3<Float> {
+        get {
+            return lightData.position
+        }
+        set {
+            lightData.position = newValue
+        }
+    }
+    
+    var direction: SIMD3<Float> {
+        get {
+            return lightData.direction
+        }
+        set {
+            lightData.direction = newValue
+        }
+    }
 }
 
 public extension BG2Light {

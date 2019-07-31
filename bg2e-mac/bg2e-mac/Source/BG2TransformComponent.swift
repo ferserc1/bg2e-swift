@@ -11,7 +11,15 @@ import Foundation
 public class BG2TransformComponent: BG2SceneComponent {
     private var matrixInternal: matrix_float4x4 = matrix_identity_float4x4
     private var worldMatrixInternal: matrix_float4x4 = matrix_identity_float4x4
-    private var invalid: Bool = false
+    private var invalid: Bool = true
+    
+    // transformChanged is true when this transform has changed. To test if
+    // some parent transform has changed, use SceneObject.transformChanged
+    public var transformChanged: Bool {
+        get {
+            return invalid
+        }
+    }
     
     public var matrix: matrix_float4x4 {
         get {
@@ -19,6 +27,7 @@ public class BG2TransformComponent: BG2SceneComponent {
         }
         set {
             matrixInternal = newValue
+            invalid = true
             if let so = sceneObject {
                 BG2TransformComponent.invalidateWorldMatrix(ofObject: so)
             }
@@ -78,6 +87,23 @@ public extension BG2SceneObject {
             }
             else {
                 return matrix_identity_float4x4
+            }
+        }
+    }
+    
+    var transformChanged: Bool {
+        get {
+            if let trx = transform, trx.transformChanged {
+                // Have a transform component that has changed
+                return true
+            }
+            else if let parent = self.parent {
+                // Don't have a transform component: delegate to the parent node
+                return parent.transformChanged
+            }
+            else {
+                // Does not have a transform component or parent: return false
+                return false
             }
         }
     }

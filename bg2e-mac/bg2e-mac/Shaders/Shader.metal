@@ -9,6 +9,8 @@
 #include <metal_stdlib>
 using namespace metal;
 
+#include "Lighting.h"
+
 #import "ShaderCommon.h"
 
 struct VertexIn {
@@ -39,5 +41,19 @@ fragment float4 fragment_main(VertexOut in [[ stage_in ]],
                               texture2d<float> albedoTexture [[ texture(0) ]]) {
     constexpr sampler textureSampler;
     //return float4(albedoTexture.sample(textureSampler, in.uv0).rgb, 1.0);
-    return float4(in.normal,1.0);
+    
+    PhongMaterial mat;
+    mat.diffuse = albedoTexture.sample(textureSampler, in.uv0);
+    mat.specular = float4(1.0);
+    mat.shininess = 0;
+    mat.normal = in.normal;
+    
+    PhongLight light;
+    light.color = float3(0.0, 0.0, 1.0);
+    light.type = DirectionalLightType;
+    light.position = float3(0.0, 0.0, 0.0);
+    light.attenuation = float3(1.0, 0.5, 0.1);
+    float3 lighting = phongLighting(light,mat);
+    
+    return float4(in.normal * lighting,1.0);
 }

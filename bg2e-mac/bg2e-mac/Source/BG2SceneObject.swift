@@ -177,3 +177,27 @@ extension BG2SceneObject : Equatable {
         return lhs === rhs
     }
 }
+
+// Life cycle functions
+
+extension BG2SceneObject {
+    func update(delta: Float) {
+        components { c in
+            c.update(delta: delta)
+        }
+        children { c in
+            c.update(delta: delta)
+        }
+    }
+    
+    func draw(fromCamera camera: BG2CameraComponent, renderEncoder: MTLRenderCommandEncoder) {
+        components { c in
+            c.draw(viewMatrix: camera.view,
+                   projectionMatrix: camera.projection,
+                   renderEncoder: renderEncoder)
+        }
+        children { c in
+            c.draw(fromCamera: camera, renderEncoder: renderEncoder)
+        }
+    }
+}
