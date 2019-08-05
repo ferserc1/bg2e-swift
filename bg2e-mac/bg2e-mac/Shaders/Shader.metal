@@ -23,6 +23,7 @@ struct VertexIn {
 
 struct VertexOut {
     float4 position [[ position ]];
+    float3 worldPosition;
     float3 normal;
     float2 uv0;
 };
@@ -30,14 +31,17 @@ struct VertexOut {
 vertex VertexOut vertex_main(const VertexIn vertexIn [[ stage_in ]],
                           constant MatrixState & matrixState [[ buffer(5) ]]) {
     VertexOut result;
-    result.position = matrixState.projection * matrixState.view * matrixState.model * vertexIn.position;
     
+    result.worldPosition = (matrixState.model * vertexIn.position).xyz;
+    result.position = matrixState.projection * matrixState.view * float4(result.worldPosition,1.0);
     result.normal =  matrixState.normal * normalize(vertexIn.normal);
     result.uv0 = vertexIn.uv0;
     return result;
 }
 
 fragment float4 fragment_main(VertexOut in [[ stage_in ]],
+                              constant PhongLight *lights [[ buffer(2) ]],
+                              constant BasicShaderFragmentUniforms &fragmentUniforms [[ buffer(3) ]],
                               texture2d<float> albedoTexture [[ texture(0) ]]) {
     constexpr sampler textureSampler;
     //return float4(albedoTexture.sample(textureSampler, in.uv0).rgb, 1.0);
@@ -48,12 +52,11 @@ fragment float4 fragment_main(VertexOut in [[ stage_in ]],
     mat.shininess = 0;
     mat.normal = in.normal;
     
-    PhongLight light;
-    light.color = float3(0.0, 0.0, 1.0);
-    light.type = DirectionalLightType;
-    light.position = float3(0.0, 0.0, 0.0);
-    light.attenuation = float3(1.0, 0.5, 0.1);
-    float3 lighting = phongLighting(light,mat);
+    float3 lighting = float3(0.0,0.0,0.0);
+    for (uint i = 0; i < fragmentUniforms.lightCount; ++i) {
+        PhongLight light = lights[0];
+        lighting += phongLighting(light,mat);
+    }
     
-    return float4(in.normal * lighting,1.0);
+    return float4(lighting,1.0);
 }

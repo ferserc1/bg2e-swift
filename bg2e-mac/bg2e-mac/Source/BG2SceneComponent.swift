@@ -22,6 +22,14 @@ open class BG2SceneComponent {
     }
     
     // Life cycle functions
+    open func componentAdded() {
+        
+    }
+    
+    open func componentRemoved() {
+        
+    }
+    
     open func update(delta: Float) {
         
     }

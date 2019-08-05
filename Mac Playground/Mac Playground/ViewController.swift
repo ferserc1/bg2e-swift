@@ -52,7 +52,10 @@ class ViewController: NSViewController {
         renderer.mainCamera = camera;
         
         var transform = BG2TransformComponent()
-        transform.matrix = matrix_float4x4.init(translate: SIMD3<Float>(0,0,-3))
+        transform.matrix =
+            matrix_float4x4.init(translate: SIMD3<Float>(0,1,-3)) *
+            matrix_float4x4.init(rotationX: Float(12).degreesToRadians)
+        
         cameraNode.addComponent(transform)
         
         scene?.addChild(cameraNode)
@@ -63,7 +66,8 @@ class ViewController: NSViewController {
         
         transform = BG2TransformComponent()
         transform.matrix =
-            matrix_float4x4.init(rotationX: Float(-55).degreesToRadians) *
+            matrix_float4x4.init(rotationY: Float(33).degreesToRadians) *
+            matrix_float4x4.init(rotationX: Float(55).degreesToRadians) *
             matrix_float4x4.init(translate: SIMD3<Float>(0,0,5))
         lightNode.addComponent(transform)
         lightTransform = transform
@@ -100,15 +104,17 @@ extension ViewController: BG2RendererDelegate {
         //    return
         //}
         //drawableItem.transform *= matrix_float4x4(rotationY: Float(1).degreesToRadians)
-        guard let lightTransform = lightTransform else {
-            return
-        }
-        timeToUpdate += delta
-        if timeToUpdate > 2 {
-            print("Update");
-            timeToUpdate = 0
-            lightTransform.matrix = lightTransform.matrix * matrix_float4x4.init(rotationX: -0.1)
-        }
+        
+        
+//        guard let lightTransform = lightTransform else {
+//            return
+//        }
+//        timeToUpdate += delta
+//        if timeToUpdate > 0.2 {
+//            print("Update");
+//            timeToUpdate = 0
+//            lightTransform.matrix = lightTransform.matrix * matrix_float4x4.init(rotationX: 0.1)
+//        }
     }
     
     

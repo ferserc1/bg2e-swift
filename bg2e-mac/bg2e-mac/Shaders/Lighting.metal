@@ -14,7 +14,13 @@
 using namespace metal;
 
 
-float3 phongLighting(thread PhongLight & l, thread PhongMaterial & m)
+float3 phongLighting(thread PhongLight & l,
+                     thread PhongMaterial & m)
 {
-    return l.color;
+    float3 lightDirection = normalize(l.direction);
+    float diffuseIntensity = saturate(dot(lightDirection,m.normal));
+    float3 diffuseColor = l.color * m.diffuse.rgb * diffuseIntensity;
+    
+    
+    return diffuseColor;
 }

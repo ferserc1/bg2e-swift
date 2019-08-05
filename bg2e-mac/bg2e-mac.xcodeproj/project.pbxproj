@@ -23,6 +23,7 @@
 		EDAFCD7D22C79A9100C3D128 /* BG2TransformComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDAFCD7C22C79A9100C3D128 /* BG2TransformComponent.swift */; };
 		EDAFCD8322C7D42700C3D128 /* Shader.metal in Sources */ = {isa = PBXBuildFile; fileRef = EDAFCD8222C7D42700C3D128 /* Shader.metal */; };
 		EDC5475522C8E43600233D4C /* BG2Material.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC5475422C8E43600233D4C /* BG2Material.swift */; };
+		EDCA96A922F8250C00221F0A /* BG2ShaderFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCA96A822F8250C00221F0A /* BG2ShaderFactory.swift */; };
 		EDCA9C0B22C8A745001ED7C9 /* BG2PolyList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCA9C0A22C8A745001ED7C9 /* BG2PolyList.swift */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +47,7 @@
 		EDAFCD7C22C79A9100C3D128 /* BG2TransformComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BG2TransformComponent.swift; sourceTree = "<group>"; };
 		EDAFCD8222C7D42700C3D128 /* Shader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shader.metal; sourceTree = "<group>"; };
 		EDC5475422C8E43600233D4C /* BG2Material.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BG2Material.swift; sourceTree = "<group>"; };
+		EDCA96A822F8250C00221F0A /* BG2ShaderFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BG2ShaderFactory.swift; sourceTree = "<group>"; };
 		EDCA9C0A22C8A745001ED7C9 /* BG2PolyList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BG2PolyList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -122,6 +124,7 @@
 				ED411CF622D6268600E02D8F /* BG2Light.swift */,
 				ED64500C22D86ADC00C68228 /* BG2LightComponent.swift */,
 				ED64500E22D873AB00C68228 /* BG2DrawableComponent.swift */,
+				EDCA96A822F8250C00221F0A /* BG2ShaderFactory.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -219,6 +222,7 @@
 				ED0B538622D4DB210022E49E /* BG2CameraComponent.swift in Sources */,
 				EDCA9C0B22C8A745001ED7C9 /* BG2PolyList.swift in Sources */,
 				EDAFCD8322C7D42700C3D128 /* Shader.metal in Sources */,
+				EDCA96A922F8250C00221F0A /* BG2ShaderFactory.swift in Sources */,
 				ED64500F22D873AB00C68228 /* BG2DrawableComponent.swift in Sources */,
 				ED411CF722D6268600E02D8F /* BG2Light.swift in Sources */,
 				EDAFCD7522C7977900C3D128 /* MathExtensions.swift in Sources */,

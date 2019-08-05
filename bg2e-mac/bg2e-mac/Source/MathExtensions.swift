@@ -8,12 +8,12 @@
 
 import simd
 
-extension Float {
-    public var radiansToDegrees: Float {
+public extension Float {
+    var radiansToDegrees: Float {
         return (self / Float.pi) * 180
     }
     
-    public var degreesToRadians: Float {
+    var degreesToRadians: Float {
         return (self / 180) * Float.pi
     }
     
@@ -27,12 +27,12 @@ extension Float {
 }
 
 
-extension Double {
-    public var radiansToDegrees: Double {
+public extension Double {
+    var radiansToDegrees: Double {
         return (self / Double.pi) * 180
     }
     
-    public var degreesToRadians: Double {
+    var degreesToRadians: Double {
         return (self / 180) * Double.pi
     }
     
@@ -136,6 +136,17 @@ public extension float4x4 {
         self.init()
         columns = (X, Y, Z, W)
     }
+    
+    var position: simd_float3 {
+        get {
+            return columns.3.xyz
+        }
+        set {
+            columns.3.x = newValue.x
+            columns.3.y = newValue.y
+            columns.3.z = newValue.z
+        }
+    }
 }
 
 public extension float3x3 {
@@ -145,10 +156,10 @@ public extension float3x3 {
     }
 }
 
-public extension SIMD4 {
-    var xyz: SIMD3<Scalar> {
+public extension simd_float4 {
+    var xyz: simd_float3 {
         get {
-            return SIMD3<Scalar>(x,y,z)
+            return simd_float3(x,y,z)
         }
         set {
             x = newValue.x

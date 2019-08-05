@@ -33,6 +33,13 @@ public class BG2Renderer: NSObject {
         }
     }()
     
+    // Factory shader to be used with polyLists.
+    // TODO: implement different options, like deferred render, phong shader
+    // PBR shaders, etc. using different parametrizations of the Renderer class
+    public lazy var polyListShaderFactory: BG2ShaderFactory = {
+        return BG2ShaderFactory(withRenderer: self)
+    }()
+    
     func buildDepthStencilState() {
         let descriptor = MTLDepthStencilDescriptor()
         descriptor.depthCompareFunction = .less
@@ -88,6 +95,8 @@ extension BG2Renderer: MTKViewDelegate {
         
         renderEncoder.setDepthStencilState(depthStencilState)
 
+        polyListShaderFactory.beginRender(fromCamera: camera,
+                                          renderEncoder: renderEncoder)
         scene.draw(fromCamera: camera, renderEncoder: renderEncoder)
         
         renderEncoder.endEncoding()

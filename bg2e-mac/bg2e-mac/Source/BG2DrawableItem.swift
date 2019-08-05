@@ -15,17 +15,23 @@ public class BG2DrawableItem {
     public var polyList: BG2PolyList
     public var material: BG2Material
     public var transform: float4x4 = float4x4(diagonal: SIMD4<Float>(1, 1, 1, 1))
+    
+    private var shaderFactory: BG2ShaderFactory
 
     public init(polyList: BG2PolyList, renderer: BG2Renderer) {
         self.polyList = polyList
         self.material = BG2Material()
         self.renderer = renderer
+        
+        self.shaderFactory = renderer.polyListShaderFactory
     }
     
     public init(polyList: BG2PolyList, material: BG2Material, renderer: BG2Renderer) {
         self.polyList = polyList
         self.material = material
         self.renderer = renderer
+        
+        self.shaderFactory = renderer.polyListShaderFactory
     }
     
     public init(polyList: BG2PolyList, material: BG2Material, transform: float4x4, renderer: BG2Renderer) {
@@ -33,6 +39,8 @@ public class BG2DrawableItem {
         self.material = material
         self.transform = transform
         self.renderer = renderer
+        
+        self.shaderFactory = renderer.polyListShaderFactory
     }
     
     public lazy var pipelineState: MTLRenderPipelineState = {
@@ -40,15 +48,11 @@ public class BG2DrawableItem {
         let plState: MTLRenderPipelineState
         
         do {
-            descriptor.colorAttachments[0].pixelFormat = .bgra8Unorm
-            descriptor.depthAttachmentPixelFormat = .depth32Float
             descriptor.label = "DrawableItem pipeline"
-            let library = renderer.shaderLibrary
-            descriptor.vertexFunction = library.makeFunction(name: "vertex_main")
-            descriptor.fragmentFunction = library.makeFunction(name: "fragment_main")
+        
+            // Use material and poly list properties to setup the shader
+            shaderFactory.setup(pipelineDescriptor: descriptor)
             descriptor.vertexDescriptor = polyList.vertexDescriptor
-            
-            // DrawableItem have all the information aboutn link material properties to shader inputs
             
             plState = try renderer.device.makeRenderPipelineState(descriptor: descriptor)
         } catch {

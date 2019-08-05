@@ -42,4 +42,9 @@ typedef struct {
     vector_float3 normal;
 } PhongMaterial;
 
+typedef struct {
+    uint lightCount;
+    vector_float3 cameraPosition;
+} BasicShaderFragmentUniforms;
+
 #endif /* ShaderCommon_h */

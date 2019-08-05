@@ -35,11 +35,14 @@ public extension BG2SceneObject {
     func addComponent(_ comp: BG2SceneComponent) {
         if let existingComp = componentIndex[String(describing: comp.typeName)],
             let index = componentArray.firstIndex(where: { $0.typeName == existingComp.typeName }) {
+            existingComp.componentRemoved()
             componentArray.remove(at: index)
+            existingComp.sceneObjectInternal = nil
         }
         componentIndex[String(describing: comp.typeName)] = comp
         componentArray.append(comp)
         comp.sceneObjectInternal = self
+        comp.componentAdded()
     }
     
     func removeComponent<T>(_ comp: T) {
@@ -48,6 +51,7 @@ public extension BG2SceneObject {
         else {
             return
         }
+        existingComp.componentRemoved()
         existingComp.sceneObjectInternal = nil
         componentArray.remove(at: index)
         componentIndex.removeValue(forKey: String(describing: comp.self))

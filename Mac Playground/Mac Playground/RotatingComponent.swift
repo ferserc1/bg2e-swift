@@ -22,6 +22,6 @@ public class RotatingComponent: BG2SceneComponent {
             return
         }
         
-        transform.matrix *= matrix_float4x4.init(rotationY: delta * 0.1)
+        transform.matrix *= matrix_float4x4.init(rotationY: delta)
     }
 }
