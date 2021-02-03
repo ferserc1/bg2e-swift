@@ -32,8 +32,8 @@
 		ED09D05522CCF754003596D3 /* ShaderCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShaderCommon.h; sourceTree = "<group>"; };
 		ED0B538522D4DB210022E49E /* BG2CameraComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BG2CameraComponent.swift; sourceTree = "<group>"; };
 		ED0FECB822CA0D8D0085AEA0 /* BG2ModelLoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BG2ModelLoad.swift; sourceTree = "<group>"; };
-		ED1BCDA522F198230069A091 /* Lighting.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; name = Lighting.metal; path = "../../../../../../../System/Volumes/Data/Users/fernando/desarrollo/bg2e-swift/bg2e-mac/bg2e-mac/Shaders/Lighting.metal"; sourceTree = "<group>"; };
-		ED1BCDA722F198DC0069A091 /* Lighting.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Lighting.h; path = "../../../../../../../System/Volumes/Data/Users/fernando/desarrollo/bg2e-swift/bg2e-mac/bg2e-mac/Shaders/Lighting.h"; sourceTree = "<group>"; };
+		ED1BCDA522F198230069A091 /* Lighting.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Lighting.metal; sourceTree = "<group>"; };
+		ED1BCDA722F198DC0069A091 /* Lighting.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Lighting.h; sourceTree = "<group>"; };
 		ED411CF622D6268600E02D8F /* BG2Light.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BG2Light.swift; sourceTree = "<group>"; };
 		ED64500C22D86ADC00C68228 /* BG2LightComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BG2LightComponent.swift; sourceTree = "<group>"; };
 		ED64500E22D873AB00C68228 /* BG2DrawableComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BG2DrawableComponent.swift; sourceTree = "<group>"; };

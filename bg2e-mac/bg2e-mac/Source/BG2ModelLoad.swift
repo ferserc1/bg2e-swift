@@ -282,35 +282,65 @@ public extension BG2ModelLoad {
     func getMaterialWithName(_ name: String, fromDictionary dict: NSDictionary?) -> BG2Material {
         let result = BG2Material()
         
-        if header.majorVersion == 1 {
-            print("Importing material \(name) from bg2 v1 file")
+        if dict?.value(forKey: "class") as? String == "PBRMaterial" {
             
-            var albedoR: Float = 1
-            var albedoG: Float = 1
-            var albedoB: Float = 1
-            var albedoA: Float = 1
-            if let r = dict?.value(forKey: "diffuseR") as? Float {
-                albedoR = r
-            }
-            if let g = dict?.value(forKey: "diffuseG") as? Float {
-                albedoG = g
-            }
-            if let b = dict?.value(forKey: "diffuseB") as? Float {
-                albedoB = b
-            }
-            if let a = dict?.value(forKey: "diffuseA") as? Float {
-                albedoA = a
-            }
-            result.albedo = SIMD4<Float>(x: albedoR, y: albedoG, z: albedoB, w: albedoA)
+            /*
+             name string
+             groupName string
+             
+             diffuse texture o color
+             diffuseUV int
+             diffuseScale vec2
+             alphaCutoff float
+             isTransparent bool
+             
+             ambientOcclussion texture
+             ambientOcclussionUV int
+             
+             metallic texture o float
+             metallicScale vec2
+             metallicChannel int
+             metallicUV int
+        
+             roughness texture o float
+             roughnessScale vec2
+             roughnessChannel int
+             roughnessUV int
+             
+             fresnel color
+             
+             normal texture
+             normalScale vec2
+             normalUV int
+     
+             castShadows bool
+             unlit bool
+             visibleToShadows bool
+             cullFace true
+             visible bool
+             */
             
-            if let albedo = dict?.value(forKey: "texture") as? String {
-                let albedoUrl: URL = self.fileContentFolder.appendingPathComponent(albedo)
+            if let albedo = dict?.value(forKey: "diffuse") as? SIMD4<Float> {
+                result.albedo = albedo
+            }
+            else if let albedoTexture = dict?.value(forKey: "diffuse") as? String {
+                let albedoUrl: URL = self.fileContentFolder.appendingPathComponent(albedoTexture)
                 do {
                     try result.setAlbedoTexture(withPath: albedoUrl, renderer: renderer)
                 } catch {
                     print("Warning: albedo texture not found at \(albedoUrl)")
                 }
             }
+            if let albedoUV = dict?.value(forKey: "diffuseUV") as? Int {
+                result.albedoUV = albedoUV
+            }
+            if let albedoScale = dict?.value(forKey: "diffuseScale") as? SIMD2<Float> {
+                result.albedoScale = albedoScale
+            }
+            
+            // TODO: Implement pbr material load
+            
+            
             if let normal = dict?.value(forKey: "normalMap") as? String {
                 let normalUrl: URL = self.fileContentFolder.appendingPathComponent(normal)
                 do {
@@ -331,7 +361,6 @@ public extension BG2ModelLoad {
                 let roughnessUrl: URL = self.fileContentFolder.appendingPathComponent(roughness)
                 do {
                     try result.setRoughnessTexture(withPath: roughnessUrl, renderer: renderer)
-                    result.invertRoughness = true
                 } catch {
                     print("Warning: roughness texture not found at \(roughness)")
                 }
@@ -346,14 +375,6 @@ public extension BG2ModelLoad {
                     try result.setMetallicTexture(withPath: metallicUrl, renderer: renderer)
                 } catch {
                     print("Warning: metallic texture not found at \(metallicUrl)")
-                }
-            }
-            if let lightEmission = dict?.value(forKey: "lightEmissionMask") as? String {
-                let lightEmissionUrl: URL = self.fileContentFolder.appendingPathComponent(lightEmission)
-                do {
-                    try result.setLightEmissionTexture(withPath: lightEmissionUrl, renderer: renderer)
-                } catch {
-                    print("Warning: light emission texture not found at \(lightEmissionUrl)")
                 }
             }
             
@@ -377,8 +398,8 @@ public extension BG2ModelLoad {
             //  textureScaleY
             
         }
-        else if header.majorVersion == 2 {
-            // TODO: Implement this
+        else {
+            print("Warning: non-pbr materials are not compatible with bg2e Swift API")
         }
 
         

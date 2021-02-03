@@ -85,7 +85,7 @@ class ViewController: NSViewController {
     }
     
     func loadDrawable() -> BG2DrawableComponent {
-        guard let url = Bundle.main.url(forResource: "test-shape", withExtension: "bg2"),
+        guard let url = Bundle.main.url(forResource: "test_cube", withExtension: "bg2"),
             let renderer = renderer else {
             fatalError("Could not load drawable")
         }

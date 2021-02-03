@@ -49,7 +49,7 @@ public class BG2PolyList {
         guard let vertices = vertices, vertices.count % 3 == 0,
               let normals = normals, normals.count % 3 == 0,
               let tex0Coords = tex0Coords, tex0Coords.count % 2 == 0,
-              let tex1Coords = (tex1Coords != nil ? tex1Coords : tex0Coords), tex1Coords.count % 2 == 0,
+              let tex1Coords = (tex1Coords?.count != 0 ? tex1Coords : tex0Coords), tex1Coords.count % 2 == 0,
               let tangents = tangents,  // This array is generated in buildTangents and will always be % 3 == 0
               let indexes = indexes
         else {

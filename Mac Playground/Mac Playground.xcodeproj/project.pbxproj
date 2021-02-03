@@ -13,6 +13,11 @@
 		ED0FECC322CA10230085AEA0 /* texture_reflection_mask.png in Resources */ = {isa = PBXBuildFile; fileRef = ED0FECBE22CA10230085AEA0 /* texture_reflection_mask.png */; };
 		ED0FECC422CA10230085AEA0 /* texture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ED0FECBF22CA10230085AEA0 /* texture.jpg */; };
 		ED1BCDA422F169AE0069A091 /* RotatingComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1BCDA322F169AE0069A091 /* RotatingComponent.swift */; };
+		ED89675025CB3544000452D5 /* test_cube_None_BaseColor.png in Resources */ = {isa = PBXBuildFile; fileRef = ED89674B25CB3544000452D5 /* test_cube_None_BaseColor.png */; };
+		ED89675125CB3544000452D5 /* test_cube_None_Metallic.png in Resources */ = {isa = PBXBuildFile; fileRef = ED89674C25CB3544000452D5 /* test_cube_None_Metallic.png */; };
+		ED89675225CB3544000452D5 /* test_cube_None_Roughness.png in Resources */ = {isa = PBXBuildFile; fileRef = ED89674D25CB3544000452D5 /* test_cube_None_Roughness.png */; };
+		ED89675325CB3544000452D5 /* test_cube.bg2 in Resources */ = {isa = PBXBuildFile; fileRef = ED89674E25CB3544000452D5 /* test_cube.bg2 */; };
+		ED89675425CB3544000452D5 /* test_cube_None_Normal.png in Resources */ = {isa = PBXBuildFile; fileRef = ED89674F25CB3544000452D5 /* test_cube_None_Normal.png */; };
 		EDAFCD5C22C7905B00C3D128 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDAFCD5B22C7905B00C3D128 /* AppDelegate.swift */; };
 		EDAFCD5E22C7905B00C3D128 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDAFCD5D22C7905B00C3D128 /* Assets.xcassets */; };
 		EDAFCD6122C7905B00C3D128 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDAFCD5F22C7905B00C3D128 /* Main.storyboard */; };
@@ -36,12 +41,17 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		ED0B538722D4DE4C0022E49E /* texture_nm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = texture_nm.png; path = ../../../data/texture_nm.png; sourceTree = "<group>"; };
-		ED0FECBB22CA10230085AEA0 /* texture_bm.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = texture_bm.jpg; path = ../../../data/texture_bm.jpg; sourceTree = "<group>"; };
-		ED0FECBC22CA10230085AEA0 /* test-shape.bg2 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "test-shape.bg2"; path = "../../../data/test-shape.bg2"; sourceTree = "<group>"; };
-		ED0FECBE22CA10230085AEA0 /* texture_reflection_mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = texture_reflection_mask.png; path = ../../../data/texture_reflection_mask.png; sourceTree = "<group>"; };
-		ED0FECBF22CA10230085AEA0 /* texture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = texture.jpg; path = ../../../data/texture.jpg; sourceTree = "<group>"; };
-		ED1BCDA322F169AE0069A091 /* RotatingComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RotatingComponent.swift; path = "../../../../../../System/Volumes/Data/Users/fernando/desarrollo/bg2e-swift/Mac Playground/Mac Playground/RotatingComponent.swift"; sourceTree = "<group>"; };
+		ED0B538722D4DE4C0022E49E /* texture_nm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = texture_nm.png; sourceTree = "<group>"; };
+		ED0FECBB22CA10230085AEA0 /* texture_bm.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = texture_bm.jpg; sourceTree = "<group>"; };
+		ED0FECBC22CA10230085AEA0 /* test-shape.bg2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "test-shape.bg2"; sourceTree = "<group>"; };
+		ED0FECBE22CA10230085AEA0 /* texture_reflection_mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = texture_reflection_mask.png; sourceTree = "<group>"; };
+		ED0FECBF22CA10230085AEA0 /* texture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = texture.jpg; sourceTree = "<group>"; };
+		ED1BCDA322F169AE0069A091 /* RotatingComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotatingComponent.swift; sourceTree = "<group>"; };
+		ED89674B25CB3544000452D5 /* test_cube_None_BaseColor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_cube_None_BaseColor.png; sourceTree = "<group>"; };
+		ED89674C25CB3544000452D5 /* test_cube_None_Metallic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_cube_None_Metallic.png; sourceTree = "<group>"; };
+		ED89674D25CB3544000452D5 /* test_cube_None_Roughness.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_cube_None_Roughness.png; sourceTree = "<group>"; };
+		ED89674E25CB3544000452D5 /* test_cube.bg2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = test_cube.bg2; sourceTree = "<group>"; };
+		ED89674F25CB3544000452D5 /* test_cube_None_Normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_cube_None_Normal.png; sourceTree = "<group>"; };
 		EDAFCD5822C7905B00C3D128 /* Mac Playground.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mac Playground.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDAFCD5B22C7905B00C3D128 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EDAFCD5D22C7905B00C3D128 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -67,13 +77,19 @@
 		ED0FECBA22CA101C0085AEA0 /* data */ = {
 			isa = PBXGroup;
 			children = (
+				ED89674B25CB3544000452D5 /* test_cube_None_BaseColor.png */,
+				ED89674C25CB3544000452D5 /* test_cube_None_Metallic.png */,
+				ED89674F25CB3544000452D5 /* test_cube_None_Normal.png */,
+				ED89674D25CB3544000452D5 /* test_cube_None_Roughness.png */,
+				ED89674E25CB3544000452D5 /* test_cube.bg2 */,
 				ED0FECBC22CA10230085AEA0 /* test-shape.bg2 */,
 				ED0FECBB22CA10230085AEA0 /* texture_bm.jpg */,
 				ED0B538722D4DE4C0022E49E /* texture_nm.png */,
 				ED0FECBE22CA10230085AEA0 /* texture_reflection_mask.png */,
 				ED0FECBF22CA10230085AEA0 /* texture.jpg */,
 			);
-			path = data;
+			name = data;
+			path = ../../data;
 			sourceTree = "<group>";
 		};
 		EDAFCD4F22C7905B00C3D128 = {
@@ -176,10 +192,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				EDAFCD5E22C7905B00C3D128 /* Assets.xcassets in Resources */,
+				ED89675225CB3544000452D5 /* test_cube_None_Roughness.png in Resources */,
+				ED89675125CB3544000452D5 /* test_cube_None_Metallic.png in Resources */,
 				ED0FECC422CA10230085AEA0 /* texture.jpg in Resources */,
 				EDAFCD6122C7905B00C3D128 /* Main.storyboard in Resources */,
+				ED89675425CB3544000452D5 /* test_cube_None_Normal.png in Resources */,
+				ED89675325CB3544000452D5 /* test_cube.bg2 in Resources */,
 				ED0B538822D4DE4C0022E49E /* texture_nm.png in Resources */,
 				ED0FECC122CA10230085AEA0 /* test-shape.bg2 in Resources */,
+				ED89675025CB3544000452D5 /* test_cube_None_BaseColor.png in Resources */,
 				ED0FECC322CA10230085AEA0 /* texture_reflection_mask.png in Resources */,
 				ED0FECC022CA10230085AEA0 /* texture_bm.jpg in Resources */,
 			);
