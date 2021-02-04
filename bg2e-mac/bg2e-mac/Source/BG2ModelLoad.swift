@@ -283,42 +283,12 @@ public extension BG2ModelLoad {
         let result = BG2Material()
         
         if dict?.value(forKey: "class") as? String == "PBRMaterial" {
-            
-            /*
-             name string
-             groupName string
-             
-             diffuse texture o color
-             diffuseUV int
-             diffuseScale vec2
-             alphaCutoff float
-             isTransparent bool
-             
-             ambientOcclussion texture
-             ambientOcclussionUV int
-             
-             metallic texture o float
-             metallicScale vec2
-             metallicChannel int
-             metallicUV int
-        
-             roughness texture o float
-             roughnessScale vec2
-             roughnessChannel int
-             roughnessUV int
-             
-             fresnel color
-             
-             normal texture
-             normalScale vec2
-             normalUV int
-     
-             castShadows bool
-             unlit bool
-             visibleToShadows bool
-             cullFace true
-             visible bool
-             */
+            if let name = dict?.value(forKey: "name") as? String {
+                result.name = name
+            }
+            if let groupName = dict?.value(forKey: "groupName") as? String {
+                result.groupName = groupName
+            }
             
             if let albedo = dict?.value(forKey: "diffuse") as? SIMD4<Float> {
                 result.albedo = albedo
@@ -337,11 +307,72 @@ public extension BG2ModelLoad {
             if let albedoScale = dict?.value(forKey: "diffuseScale") as? SIMD2<Float> {
                 result.albedoScale = albedoScale
             }
+            if let alphaCutoff = dict?.value(forKey: "alphaCutoff") as? Float {
+                result.alphaCutoff = alphaCutoff
+            }
+            if let isTransparent = dict?.value(forKey: "isTransparent") as? Bool {
+                result.isTransparent = isTransparent
+            }
             
-            // TODO: Implement pbr material load
+            if let ao = dict?.value(forKey: "ambientOcclussion") as? String {
+                let aoUrl: URL = self.fileContentFolder.appendingPathComponent(ao)
+                do {
+                    try result.setAmbientOcclussionTexture(withPath: aoUrl, renderer: renderer)
+                } catch {
+                    print("Warning: ambient occlusion texture not found at \(aoUrl)")
+                }
+            }
+            if let aoUV = dict?.value(forKey: "ambientOcclussionUV") as? Int {
+                result.ambientOcclussionUV = aoUV;
+            }
             
+            if let metallic = dict?.value(forKey: "metallic") as? Float {
+                result.metallic = metallic
+            }
+            else if let metallicTexture = dict?.value(forKey: "metallic") as? String {
+                let metallicUrl: URL = self.fileContentFolder.appendingPathComponent(metallicTexture)
+                do {
+                    try result.setMetallicTexture(withPath: metallicUrl, renderer: renderer)
+                } catch {
+                    print("Warning: metallic texture not found at \(metallicUrl)")
+                }
+            }
+            if let metallicChannel = dict?.value(forKey: "metallicChannel") as? Int {
+                result.metallicTextureChannel = metallicChannel
+            }
+            if let metallicScale = dict?.value(forKey: "metallicScale") as? SIMD2<Float> {
+                result.metallicScale = metallicScale
+            }
+            if let metallicUV = dict?.value(forKey: "metallicUV") as? Int {
+                result.metallicUV = metallicUV
+            }
             
-            if let normal = dict?.value(forKey: "normalMap") as? String {
+            if let roughness = dict?.value(forKey: "roughness") as? Float {
+                result.roughness = roughness
+            }
+            else if let roughnessTexture = dict?.value(forKey: "roughness") as? String {
+                let roughnessUrl: URL = self.fileContentFolder.appendingPathComponent(roughnessTexture)
+                do {
+                    try result.setMetallicTexture(withPath: roughnessUrl, renderer: renderer)
+                } catch {
+                    print("Warning: roughness texture not found at \(roughnessUrl)")
+                }
+            }
+            if let roughnessChannel = dict?.value(forKey: "roughnessChannel") as? Int {
+                result.roughnessTextureChannel = roughnessChannel
+            }
+            if let roughnessScale = dict?.value(forKey: "roughnessScale") as? SIMD2<Float> {
+                result.roughnessScale = roughnessScale
+            }
+            if let roughnessUV = dict?.value(forKey: "roughnessUV") as? Int {
+                result.roughnessUV = roughnessUV
+            }
+            
+            if let fresnel = dict?.value(forKey: "fresnel") as? SIMD4<Float> {
+                result.fresnel = fresnel
+            }
+                        
+            if let normal = dict?.value(forKey: "normal") as? String {
                 let normalUrl: URL = self.fileContentFolder.appendingPathComponent(normal)
                 do {
                     try result.setNormalTexture(withPath: normalUrl, renderer: renderer)
@@ -349,54 +380,28 @@ public extension BG2ModelLoad {
                     print("Warning: normal texture not found at \(normalUrl)")
                 }
             }
-            if let ao = dict?.value(forKey: "lightmap") as? String {
-                let aoUrl: URL = self.fileContentFolder.appendingPathComponent(ao)
-                do {
-                    try result.setAmbientOcclussionTexture(withPath: aoUrl, renderer: renderer)
-                } catch {
-                    print("Warning: ambient occlussion texture not found at\(aoUrl)")
-                }
+            if let normalScale = dict?.value(forKey: "normalScale") as? SIMD2<Float> {
+                result.normalScale = normalScale
             }
-            if let roughness = dict?.value(forKey: "reflectionAmount") as? String {
-                let roughnessUrl: URL = self.fileContentFolder.appendingPathComponent(roughness)
-                do {
-                    try result.setRoughnessTexture(withPath: roughnessUrl, renderer: renderer)
-                } catch {
-                    print("Warning: roughness texture not found at \(roughness)")
-                }
-            }
-            // Metalicity: is imported from shininess and sininess mask
-            if let sh = dict?.value(forKey: "shininess") as? Float {
-                result.metallic = sh == 0.0 ? 255.0 : sh
-            }
-            if let metallic = dict?.value(forKey: "shininessMask") as? String {
-                let metallicUrl: URL = self.fileContentFolder.appendingPathComponent(metallic)
-                do {
-                    try result.setMetallicTexture(withPath: metallicUrl, renderer: renderer)
-                } catch {
-                    print("Warning: metallic texture not found at \(metallicUrl)")
-                }
+            if let normalUV = dict?.value(forKey: "normalUV") as? Int {
+                result.normalUV = normalUV
             }
             
-            
-            
-            // TODO:
-            //  alphaCutoff
-            //  lightEmission
-            //  lightEmissionMaskChannel
-            //  normalMapScaleX
-            //  normalMapScaleY
-            //  normalMapOffsetX
-            //  normalMapOffsetY
-            //  cullFace
-            //  castShadows
-            //  receiveShadows
-            //  visible
-            //  textureOffsetX
-            //  textureOffsetY
-            //  textureScaleX
-            //  textureScaleY
-            
+            if let castShadows = dict?.value(forKey: "castShadows") as? Bool {
+                result.castShadows = castShadows
+            }
+            if let unlit = dict?.value(forKey: "unlit") as? Bool {
+                result.unlit = unlit
+            }
+            if let visibleToShadows = dict?.value(forKey: "visibleToShadows") as? Bool {
+                result.visibleToShadows = visibleToShadows
+            }
+            if let cullFace = dict?.value(forKey: "cullFace") as? Bool {
+                result.cullFace = cullFace
+            }
+            if let visible = dict?.value(forKey: "visible") as? Bool {
+                result.visible = visible
+            }
         }
         else {
             print("Warning: non-pbr materials are not compatible with bg2e Swift API")
