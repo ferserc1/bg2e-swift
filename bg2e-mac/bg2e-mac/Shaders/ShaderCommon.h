@@ -25,6 +25,29 @@ typedef enum {
     DisabledLightType = 0
 } LightType;
 
+typedef enum {
+    PositionAttribIndex = 0,
+    NormalAttribIndex = 1,
+    UV0AttribIndex = 2,
+    UV1AttribIndex = 3,
+    TangentAttribIndex = 4
+} Attributes;
+
+typedef enum {
+    MatrixStateIndex = 10,
+    LightUniformIndex = 11,
+    FragmentUniformIndex = 12,
+    PBRMaterialUniformIndex = 13
+} UniformBufferIndex;
+
+typedef enum {
+    AlbedoTextureIndex = 0,
+    AOTextureIndex = 1,
+    MetallicTextureIndex = 2,
+    RoughnessTextureIndex = 3,
+    NormalTextureIndex = 4
+} TextureIndex;
+
 typedef struct {
     vector_float3 position;
     vector_float3 direction;
@@ -35,12 +58,36 @@ typedef struct {
     LightType type;
 } PhongLight;
 
+
 typedef struct {
-    vector_float4 diffuse;
-    vector_float4 specular;
-    float shininess;
-    vector_float3 normal;
-} PhongMaterial;
+    vector_float4 albedo;
+    vector_float2 albedoScale;
+    int albedoUV;
+    bool isTransparent;
+    float alphaCutoff;
+    
+    int aoUV;
+    
+    float metallic;
+    vector_float2 metallicScale;
+    int metallicChannel;
+    int metallicUV;
+    
+    float roughness;
+    vector_float2 roughnessScale;
+    int roughnessChannel;
+    int roughnessUV;
+    
+    vector_float4 fresnel;
+    
+    vector_float2 normalScale;
+    int normalUV;
+    
+    bool castShadows;
+    bool unlit;
+    bool visibleToShadows;
+    bool visible;
+} PBRMaterial;
 
 typedef struct {
     uint lightCount;

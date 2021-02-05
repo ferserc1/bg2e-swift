@@ -20,6 +20,8 @@ public class BG2ShaderFactory {
     open func setup(pipelineDescriptor desc: MTLRenderPipelineDescriptor) {
         desc.colorAttachments[0].pixelFormat = .bgra8Unorm
         desc.depthAttachmentPixelFormat = .depth32Float
+        
+        
         desc.label = "Default shader pipeline"
         let library = renderer.shaderLibrary
         desc.vertexFunction = library.makeFunction(name: "vertex_main")
@@ -34,9 +36,9 @@ public class BG2ShaderFactory {
         
         renderEncoder.setFragmentBytes(shaderLights,
                                        length: MemoryLayout<PhongLight>.stride * shaderLights.count,
-                                       index: 2)
+                                       index: Int(LightUniformIndex.rawValue))
         renderEncoder.setFragmentBytes(&fragmentUniforms,
                                        length: MemoryLayout<BasicShaderFragmentUniforms>.stride,
-                                       index: 3)
+                                       index: Int(FragmentUniformIndex.rawValue))
     }
 }

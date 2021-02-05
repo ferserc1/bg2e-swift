@@ -72,9 +72,9 @@ public class BG2DrawableItem {
         
         renderEncoder.setVertexBytes(&uniforms,
                                      length: MemoryLayout<MatrixState>.stride,
-                                     index: polyList.nextAvailableBufferIndex)
-        renderEncoder.setFragmentTexture(self.material.albedoTexture, index: Int(0))
+                                     index: Int(MatrixStateIndex.rawValue))
         
+        material.draw(encoder: renderEncoder)
         polyList.draw(encoder: renderEncoder)
     }
 }

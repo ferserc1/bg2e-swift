@@ -11,6 +11,5 @@
 
 #import "ShaderCommon.h"
 
-float3 phongLighting(thread PhongLight & l, thread PhongMaterial & m);
 
 #endif /* Lighting_h */

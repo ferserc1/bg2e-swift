@@ -89,23 +89,23 @@ public class BG2PolyList {
         vertexDescriptor = MTLVertexDescriptor()
         // vertex
         vertexDescriptor.attributes[0].format = .float3
-        vertexDescriptor.attributes[0].bufferIndex = 0
+        vertexDescriptor.attributes[0].bufferIndex = Int(PositionAttribIndex.rawValue)
         vertexDescriptor.attributes[0].offset = 0
         // normal
         vertexDescriptor.attributes[1].format = .float3
-        vertexDescriptor.attributes[1].bufferIndex = 1
+        vertexDescriptor.attributes[1].bufferIndex = Int(NormalAttribIndex.rawValue)
         vertexDescriptor.attributes[1].offset = 0
         // uv0
         vertexDescriptor.attributes[2].format = .float2
-        vertexDescriptor.attributes[2].bufferIndex = 2
+        vertexDescriptor.attributes[2].bufferIndex = Int(UV0AttribIndex.rawValue)
         vertexDescriptor.attributes[2].offset = 0
         // uv1
         vertexDescriptor.attributes[3].format = .float2
-        vertexDescriptor.attributes[3].bufferIndex = 3
+        vertexDescriptor.attributes[3].bufferIndex = Int(UV1AttribIndex.rawValue)
         vertexDescriptor.attributes[3].offset = 0
         // tangent
         vertexDescriptor.attributes[4].format = .float3
-        vertexDescriptor.attributes[4].bufferIndex = 4
+        vertexDescriptor.attributes[4].bufferIndex = Int(TangentAttribIndex.rawValue)
         vertexDescriptor.attributes[4].offset = 0
         
         vertexDescriptor.layouts[0].stride = MemoryLayout<Float>.stride * 3 // vertices
@@ -115,25 +115,17 @@ public class BG2PolyList {
         vertexDescriptor.layouts[4].stride = MemoryLayout<Float>.stride * 3 // tangent
     }
     
-    // Returns the next available buffer index to use in the render command encoder
-    // This value is 5 because we are using the indexes 0 to 4 to pass the attribute buffers
-    // to the shdaer
-    public var nextAvailableBufferIndex: Int {
-        get {
-            return 5
-        }
-    }
     public func draw(encoder: MTLRenderCommandEncoder) {
         guard let indexes = indexes
         else {
             print("Warning: invalid buffer data in PolyList")
             return
         }
-        encoder.setVertexBuffer(vertexBuffer, offset: 0, index: 0)
-        encoder.setVertexBuffer(normalBuffer, offset: 0, index: 1)
-        encoder.setVertexBuffer(tex0Buffer, offset: 0, index: 2)
-        encoder.setVertexBuffer(tex1Buffer, offset: 0, index: 3)
-        encoder.setVertexBuffer(tangentBuffer, offset: 0, index: 4)
+        encoder.setVertexBuffer(vertexBuffer, offset: 0, index: Int(PositionAttribIndex.rawValue))
+        encoder.setVertexBuffer(normalBuffer, offset: 0, index: Int(NormalAttribIndex.rawValue))
+        encoder.setVertexBuffer(tex0Buffer, offset: 0, index: Int(UV0AttribIndex.rawValue))
+        encoder.setVertexBuffer(tex1Buffer, offset: 0, index: Int(UV1AttribIndex.rawValue))
+        encoder.setVertexBuffer(tangentBuffer, offset: 0, index: Int(TangentAttribIndex.rawValue))
         encoder.drawIndexedPrimitives(type: .triangle,
                                       indexCount: indexes.count,
                                       indexType: .uint32,
@@ -142,6 +134,7 @@ public class BG2PolyList {
 }
 
 extension BG2PolyList {
+    
     func buildTangents() {
         guard let tex0Coords = tex0Coords, tex0Coords.count % 2 == 0,
               let vertices = vertices, vertices.count % 3 == 0,
