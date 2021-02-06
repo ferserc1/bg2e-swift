@@ -95,7 +95,13 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: BG2RendererDelegate {
-    func update(_ delta: Float) {
+    func createScene(renderer: BG2Renderer) -> BG2SceneObject {
+        return BG2SceneObject(withRenderer: renderer)
+    }
+    func resize(_ view: MTKView, drawableSizeWillChange size: CGSize) {
+        
+    }
+    func update(_ delta: Float, renderer: BG2Renderer) {
         
     }
 }

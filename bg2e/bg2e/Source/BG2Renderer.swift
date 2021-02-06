@@ -9,7 +9,9 @@
 import MetalKit
 
 public protocol BG2RendererDelegate: class {
-    func update(_ delta: Float)
+    func createScene(renderer: BG2Renderer) -> BG2SceneObject
+    func resize(_ view: MTKView, drawableSizeWillChange size: CGSize)
+    func update(_ delta: Float, renderer: BG2Renderer)
 }
 
 public class BG2Renderer: NSObject {
@@ -17,7 +19,11 @@ public class BG2Renderer: NSObject {
     public var commandQueue: MTLCommandQueue!
     public var depthStencilState: MTLDepthStencilState!
     
-    public var delegate: BG2RendererDelegate?
+    public var delegate: BG2RendererDelegate? {
+        didSet {
+            self.sceneRoot = delegate?.createScene(renderer: self)
+        }
+    }
     
     var metalView: MTKView
     
@@ -75,12 +81,14 @@ extension BG2Renderer: MTKViewDelegate {
         
         let aspect: Float = Float(view.bounds.size.width) / Float(view.bounds.size.height)
         camera.projection = matrix_float4x4(perspectiveFov: 45, near: 0.1, far: 100.0, aspect: aspect)
+        
+        delegate?.resize(view, drawableSizeWillChange: size)
     }
     
     public func draw(in view: MTKView) {
         // Call delegate "update" method
         // TODO: pass a valid delta time
-        delegate?.update(1.0 / 60.0)
+        delegate?.update(1.0 / 60.0, renderer: self)
         
         guard let descriptor = view.currentRenderPassDescriptor,
             let commandBuffer = commandQueue.makeCommandBuffer(),
