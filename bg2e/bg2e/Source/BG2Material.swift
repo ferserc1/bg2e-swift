@@ -217,10 +217,10 @@ public class BG2Material {
         }
     }
     
-    private var material: PBRMaterial
+    private var material: ShaderMaterial
     
     init() {
-        material = PBRMaterial()
+        material = ShaderMaterial()
         material.albedo = vector_float4(1,1,1,1)
         material.albedoScale = vector_float2(1,1)
         material.albedoUV = 0
@@ -289,9 +289,19 @@ public extension BG2Material {
     }
 }
 
+public extension BG2Material {
+    func makeFunctionConstants() -> MTLFunctionConstantValues {
+        let functionConstants = MTLFunctionConstantValues()
+        var property = albedoTexture != nil
+        functionConstants.setConstantValue(&property, type: .bool, index: Int(FuncConstColorTextureIndex.rawValue))
+        
+        return functionConstants
+    }
+}
+
 extension BG2Material {
     func draw(encoder: MTLRenderCommandEncoder) {
-        encoder.setFragmentBytes(&self.material, length: MemoryLayout<PBRMaterial>.stride, index: Int(PBRMaterialUniformIndex.rawValue))
+        encoder.setFragmentBytes(&self.material, length: MemoryLayout<ShaderMaterial>.stride, index: Int(PBRMaterialUniformIndex.rawValue))
         encoder.setFragmentTexture(self.albedoTexture, index: Int(AlbedoTextureIndex.rawValue))
         
         // TODO: other textures

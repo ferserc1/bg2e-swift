@@ -51,7 +51,7 @@ public class BG2DrawableItem {
             descriptor.label = "DrawableItem pipeline"
         
             // Use material and poly list properties to setup the shader
-            shaderFactory.setup(pipelineDescriptor: descriptor)
+            shaderFactory.setup(pipelineDescriptor: descriptor, material: material)
             descriptor.vertexDescriptor = polyList.vertexDescriptor
             
             plState = try renderer.device.makeRenderPipelineState(descriptor: descriptor)

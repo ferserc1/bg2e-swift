@@ -17,8 +17,8 @@ public class BG2LightComponent: BG2SceneComponent {
     }
     
     private static var _shaderLightsChanged: Bool = true
-    private static var _shaderLights: [PhongLight] = []
-    public static var shaderLights: [PhongLight] {
+    private static var _shaderLights: [ShaderLight] = []
+    public static var shaderLights: [ShaderLight] {
         get {
             if (_shaderLightsChanged) {
                 _shaderLights.removeAll(keepingCapacity: true)

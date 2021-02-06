@@ -9,9 +9,9 @@
 import Foundation
 
 public class BG2Light {
-    private var lightData: PhongLight = PhongLight()
+    private var lightData: ShaderLight = ShaderLight()
     
-    public var shaderLightData: PhongLight {
+    public var shaderLightData: ShaderLight {
         get {
             return lightData
         }
@@ -25,11 +25,10 @@ public class BG2Light {
     };
     
     public init() {
-        lightData.color = SIMD3<Float>(1.0,1.0,1.0)
-        lightData.specular = SIMD3<Float>(1.0, 1.0, 1.0)
-        lightData.attenuation = SIMD3<Float>(1.0, 0.5, 0.1)
-        lightData.position = SIMD3<Float>(0.0, 0.0, 0.0)
-        lightData.direction = SIMD3<Float>(0.0, 0.0, 1.0)
+        lightData.color = vector_float3(1.0,1.0,1.0)
+        lightData.attenuation = vector_float3(1.0, 0.5, 0.1)
+        lightData.position = vector_float3(0.0, 0.0, 0.0)
+        lightData.direction = vector_float3(0.0, 0.0, 1.0)
         lightData.intensity = 1.0;
         lightData.type = DirectionalLightType
     }

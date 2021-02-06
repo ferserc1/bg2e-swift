@@ -11,5 +11,18 @@
 
 #import "ShaderCommon.h"
 
+typedef struct Lighting {
+    float3 lightDirection;
+    float3 viewDirection;
+    float3 baseColor;
+    float3 normal;
+    float metallic;
+    float roughness;
+    float3 ambientOcclusion;
+    float3 lightColor;
+} Lighting;
+
+
+float3 basicPBRLight(Lighting lighting);
 
 #endif /* Lighting_h */

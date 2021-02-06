@@ -13,6 +13,12 @@ using namespace metal;
 
 #import "ShaderCommon.h"
 
+constant bool hasColorTexture [[function_constant(FuncConstColorTextureIndex)]];
+//constant bool hasNormalTexture [[function_constant(FuncConstNormalTextureIndex)]];
+//constant bool hasRoughnessTexture [[function_constant(FuncConstRoughnessTextureIndex)]];
+//constant bool hasMetallicTexture [[function_constant(FuncConstMetallicTextureIndex)]];
+//constant bool hasAOTexture [[function_constant(FuncConstAOTextureIndex)]];
+
 struct VertexIn {
     float4 position [[ attribute(PositionAttribIndex) ]];
     float3 normal [[ attribute(NormalAttribIndex) ]];
@@ -43,12 +49,16 @@ vertex VertexOut vertex_main(const VertexIn vertexIn [[ stage_in ]],
     return result;
 }
 
-fragment float4 fragment_main(VertexOut in [[ stage_in ]],
-                              constant PhongLight *lights [[ buffer(LightUniformIndex) ]],
-                              constant BasicShaderFragmentUniforms &fragmentUniforms [[ buffer(FragmentUniformIndex) ]],
-                              constant PBRMaterial &material [[ buffer(PBRMaterialUniformIndex) ]],
-                              texture2d<float> albedoTexture [[ texture(AlbedoTextureIndex) ]])
+fragment float4 fragment_main(
+    VertexOut in [[ stage_in ]],
+    constant ShaderLight *lights [[ buffer(LightUniformIndex) ]],
+    constant BasicShaderFragmentUniforms &fragmentUniforms [[ buffer(FragmentUniformIndex) ]],
+    constant ShaderMaterial &material [[ buffer(PBRMaterialUniformIndex) ]],
+    texture2d<float> albedoTexture [[ texture(AlbedoTextureIndex), function_constant(hasColorTexture) ]])
 {
     constexpr sampler defaultSampler;
-    return albedoTexture.sample(defaultSampler, in.uv0) * material.albedo;
+    Lighting lighting;
+    lighting.baseColor = (hasColorTexture ? albedoTexture.sample(defaultSampler, in.uv0) : material.albedo).rgb;
+    
+    return float4(basicPBRLight(lighting), 1.0);
 }

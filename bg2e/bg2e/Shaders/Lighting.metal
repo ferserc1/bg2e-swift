@@ -11,6 +11,11 @@
 
 #include "ShaderCommon.h"
 
+
+
 using namespace metal;
 
 
+float3 basicPBRLight(Lighting lighting) {
+    return lighting.baseColor;
+}

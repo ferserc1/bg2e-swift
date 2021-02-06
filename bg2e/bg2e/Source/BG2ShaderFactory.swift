@@ -17,15 +17,20 @@ public class BG2ShaderFactory {
         self.renderer = renderer
     }
     
-    open func setup(pipelineDescriptor desc: MTLRenderPipelineDescriptor) {
+    open func setup(pipelineDescriptor desc: MTLRenderPipelineDescriptor, material: BG2Material) {
         desc.colorAttachments[0].pixelFormat = .bgra8Unorm
         desc.depthAttachmentPixelFormat = .depth32Float
         
+        let functionConstants = material.makeFunctionConstants()
         
         desc.label = "Default shader pipeline"
         let library = renderer.shaderLibrary
         desc.vertexFunction = library.makeFunction(name: "vertex_main")
-        desc.fragmentFunction = library.makeFunction(name: "fragment_main")
+        do {
+            desc.fragmentFunction = try library.makeFunction(name: "fragment_main", constantValues: functionConstants)
+        } catch let error {
+            fatalError(error.localizedDescription)
+        }
     }
     
     open func beginRender(fromCamera cam: BG2CameraComponent, renderEncoder: MTLRenderCommandEncoder) {
@@ -35,7 +40,7 @@ public class BG2ShaderFactory {
         fragmentUniforms.cameraPosition = cam.view.position
         
         renderEncoder.setFragmentBytes(shaderLights,
-                                       length: MemoryLayout<PhongLight>.stride * shaderLights.count,
+                                       length: MemoryLayout<ShaderLight>.stride * shaderLights.count,
                                        index: Int(LightUniformIndex.rawValue))
         renderEncoder.setFragmentBytes(&fragmentUniforms,
                                        length: MemoryLayout<BasicShaderFragmentUniforms>.stride,

@@ -52,11 +52,12 @@ typedef struct {
     vector_float3 position;
     vector_float3 direction;
     vector_float3 color;
-    vector_float3 specular;
     float intensity;
     vector_float3 attenuation;
+    float spotCutoff;   // cone angle
+    float coneAttenuation;  // exponent
     LightType type;
-} PhongLight;
+} ShaderLight;
 
 
 typedef struct {
@@ -87,11 +88,19 @@ typedef struct {
     int unlit;
     int visibleToShadows;
     int visible;
-} PBRMaterial;
+} ShaderMaterial;
 
 typedef struct {
     uint lightCount;
     vector_float3 cameraPosition;
 } BasicShaderFragmentUniforms;
+
+typedef enum {
+    FuncConstColorTextureIndex = 0,
+    FuncConstNormalTextureIndex = 1,
+    FuncConstRoughnessTextureIndex = 2,
+    FuncConstMetallicTextureIndex = 3,
+    FuncConstAOTextureIndex = 4
+} FunctionConstantIndexes;
 
 #endif /* ShaderCommon_h */
