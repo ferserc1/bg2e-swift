@@ -71,6 +71,8 @@
 		ED0720E425CE96AE007D64E2 /* texture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ED0720D025CE96AE007D64E2 /* texture.jpg */; };
 		ED0720E825CE9724007D64E2 /* RotatingComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0720E725CE9724007D64E2 /* RotatingComponent.swift */; };
 		ED0720E925CE9724007D64E2 /* RotatingComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0720E725CE9724007D64E2 /* RotatingComponent.swift */; };
+		ED4F941D25CED1F300BC958A /* RendererDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4F941C25CED1F300BC958A /* RendererDelegate.swift */; };
+		ED4F941E25CED1F300BC958A /* RendererDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4F941C25CED1F300BC958A /* RendererDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -118,6 +120,7 @@
 		ED0720CF25CE96AE007D64E2 /* texture_bm.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = texture_bm.jpg; sourceTree = "<group>"; };
 		ED0720D025CE96AE007D64E2 /* texture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = texture.jpg; sourceTree = "<group>"; };
 		ED0720E725CE9724007D64E2 /* RotatingComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotatingComponent.swift; sourceTree = "<group>"; };
+		ED4F941C25CED1F300BC958A /* RendererDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RendererDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,8 +232,9 @@
 		ED0720C325CE9552007D64E2 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				ED0720E725CE9724007D64E2 /* RotatingComponent.swift */,
 				ED0720C625CE9693007D64E2 /* data */,
+				ED4F941C25CED1F300BC958A /* RendererDelegate.swift */,
+				ED0720E725CE9724007D64E2 /* RotatingComponent.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -376,6 +380,7 @@
 				ED0720B325CE8C67007D64E2 /* BG2ModelLoad.swift in Sources */,
 				ED07209F25CE8C67007D64E2 /* Shader.metal in Sources */,
 				ED0720A725CE8C67007D64E2 /* BG2CameraComponent.swift in Sources */,
+				ED4F941D25CED1F300BC958A /* RendererDelegate.swift in Sources */,
 				ED0720A925CE8C67007D64E2 /* BG2DrawableComponent.swift in Sources */,
 				ED0720E825CE9724007D64E2 /* RotatingComponent.swift in Sources */,
 				ED0720AF25CE8C67007D64E2 /* BG2DrawableItem.swift in Sources */,
@@ -402,6 +407,7 @@
 				ED0720A025CE8C67007D64E2 /* Shader.metal in Sources */,
 				ED0720B425CE8C67007D64E2 /* BG2ModelLoad.swift in Sources */,
 				ED0720A625CE8C67007D64E2 /* BG2SceneObject.swift in Sources */,
+				ED4F941E25CED1F300BC958A /* RendererDelegate.swift in Sources */,
 				ED0720BE25CE8C67007D64E2 /* BG2PolyList.swift in Sources */,
 				ED0720AE25CE8C67007D64E2 /* BG2LightComponent.swift in Sources */,
 				ED0720AC25CE8C67007D64E2 /* BG2TransformComponent.swift in Sources */,

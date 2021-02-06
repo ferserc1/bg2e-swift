@@ -10,7 +10,7 @@ import MetalKit
 
 public protocol BG2RendererDelegate: class {
     func createScene(renderer: BG2Renderer) -> BG2SceneObject
-    func resize(_ view: MTKView, drawableSizeWillChange size: CGSize)
+    func resize(_ view: MTKView, drawableSizeWillChange size: CGSize, renderer: BG2Renderer)
     func update(_ delta: Float, renderer: BG2Renderer)
 }
 
@@ -22,6 +22,8 @@ public class BG2Renderer: NSObject {
     public var delegate: BG2RendererDelegate? {
         didSet {
             self.sceneRoot = delegate?.createScene(renderer: self)
+            
+            self.mtkView(self.metalView, drawableSizeWillChange: self.metalView.drawableSize)
         }
     }
     
@@ -82,7 +84,7 @@ extension BG2Renderer: MTKViewDelegate {
         let aspect: Float = Float(view.bounds.size.width) / Float(view.bounds.size.height)
         camera.projection = matrix_float4x4(perspectiveFov: 45, near: 0.1, far: 100.0, aspect: aspect)
         
-        delegate?.resize(view, drawableSizeWillChange: size)
+        delegate?.resize(view, drawableSizeWillChange: size, renderer: self)
     }
     
     public func draw(in view: MTKView) {
