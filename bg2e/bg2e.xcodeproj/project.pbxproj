@@ -1,0 +1,790 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		ED07206225CE8A8A007D64E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED07206125CE8A8A007D64E2 /* AppDelegate.swift */; };
+		ED07206425CE8A8A007D64E2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED07206325CE8A8A007D64E2 /* SceneDelegate.swift */; };
+		ED07206625CE8A8A007D64E2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED07206525CE8A8A007D64E2 /* ViewController.swift */; };
+		ED07206925CE8A8A007D64E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED07206725CE8A8A007D64E2 /* Main.storyboard */; };
+		ED07206B25CE8A8B007D64E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED07206A25CE8A8B007D64E2 /* Assets.xcassets */; };
+		ED07206E25CE8A8B007D64E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED07206C25CE8A8B007D64E2 /* LaunchScreen.storyboard */; };
+		ED07207B25CE8A9D007D64E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED07207A25CE8A9D007D64E2 /* AppDelegate.swift */; };
+		ED07207D25CE8A9D007D64E2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED07207C25CE8A9D007D64E2 /* ViewController.swift */; };
+		ED07207F25CE8A9E007D64E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED07207E25CE8A9E007D64E2 /* Assets.xcassets */; };
+		ED07208225CE8A9E007D64E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED07208025CE8A9E007D64E2 /* Main.storyboard */; };
+		ED07209F25CE8C67007D64E2 /* Shader.metal in Sources */ = {isa = PBXBuildFile; fileRef = ED07208C25CE8C67007D64E2 /* Shader.metal */; };
+		ED0720A025CE8C67007D64E2 /* Shader.metal in Sources */ = {isa = PBXBuildFile; fileRef = ED07208C25CE8C67007D64E2 /* Shader.metal */; };
+		ED0720A125CE8C67007D64E2 /* Lighting.metal in Sources */ = {isa = PBXBuildFile; fileRef = ED07208F25CE8C67007D64E2 /* Lighting.metal */; };
+		ED0720A225CE8C67007D64E2 /* Lighting.metal in Sources */ = {isa = PBXBuildFile; fileRef = ED07208F25CE8C67007D64E2 /* Lighting.metal */; };
+		ED0720A325CE8C67007D64E2 /* BG2SceneComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED07209125CE8C67007D64E2 /* BG2SceneComponent.swift */; };
+		ED0720A425CE8C67007D64E2 /* BG2SceneComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED07209125CE8C67007D64E2 /* BG2SceneComponent.swift */; };
+		ED0720A525CE8C67007D64E2 /* BG2SceneObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED07209225CE8C67007D64E2 /* BG2SceneObject.swift */; };
+		ED0720A625CE8C67007D64E2 /* BG2SceneObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED07209225CE8C67007D64E2 /* BG2SceneObject.swift */; };
+		ED0720A725CE8C67007D64E2 /* BG2CameraComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED07209325CE8C67007D64E2 /* BG2CameraComponent.swift */; };
+		ED0720A825CE8C67007D64E2 /* BG2CameraComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED07209325CE8C67007D64E2 /* BG2CameraComponent.swift */; };
+		ED0720A925CE8C67007D64E2 /* BG2DrawableComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED07209425CE8C67007D64E2 /* BG2DrawableComponent.swift */; };
+		ED0720AA25CE8C67007D64E2 /* BG2DrawableComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED07209425CE8C67007D64E2 /* BG2DrawableComponent.swift */; };
+		ED0720AB25CE8C67007D64E2 /* BG2TransformComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED07209525CE8C67007D64E2 /* BG2TransformComponent.swift */; };
+		ED0720AC25CE8C67007D64E2 /* BG2TransformComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED07209525CE8C67007D64E2 /* BG2TransformComponent.swift */; };
+		ED0720AD25CE8C67007D64E2 /* BG2LightComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED07209625CE8C67007D64E2 /* BG2LightComponent.swift */; };
+		ED0720AE25CE8C67007D64E2 /* BG2LightComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED07209625CE8C67007D64E2 /* BG2LightComponent.swift */; };
+		ED0720AF25CE8C67007D64E2 /* BG2DrawableItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED07209725CE8C67007D64E2 /* BG2DrawableItem.swift */; };
+		ED0720B025CE8C67007D64E2 /* BG2DrawableItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED07209725CE8C67007D64E2 /* BG2DrawableItem.swift */; };
+		ED0720B125CE8C67007D64E2 /* BG2Material.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED07209825CE8C67007D64E2 /* BG2Material.swift */; };
+		ED0720B225CE8C67007D64E2 /* BG2Material.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED07209825CE8C67007D64E2 /* BG2Material.swift */; };
+		ED0720B325CE8C67007D64E2 /* BG2ModelLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED07209925CE8C67007D64E2 /* BG2ModelLoad.swift */; };
+		ED0720B425CE8C67007D64E2 /* BG2ModelLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED07209925CE8C67007D64E2 /* BG2ModelLoad.swift */; };
+		ED0720B525CE8C67007D64E2 /* MathExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED07209A25CE8C67007D64E2 /* MathExtensions.swift */; };
+		ED0720B625CE8C67007D64E2 /* MathExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED07209A25CE8C67007D64E2 /* MathExtensions.swift */; };
+		ED0720B725CE8C67007D64E2 /* BG2ShaderFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED07209B25CE8C67007D64E2 /* BG2ShaderFactory.swift */; };
+		ED0720B825CE8C67007D64E2 /* BG2ShaderFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED07209B25CE8C67007D64E2 /* BG2ShaderFactory.swift */; };
+		ED0720B925CE8C67007D64E2 /* BG2Light.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED07209C25CE8C67007D64E2 /* BG2Light.swift */; };
+		ED0720BA25CE8C67007D64E2 /* BG2Light.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED07209C25CE8C67007D64E2 /* BG2Light.swift */; };
+		ED0720BB25CE8C67007D64E2 /* BG2Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED07209D25CE8C67007D64E2 /* BG2Renderer.swift */; };
+		ED0720BC25CE8C67007D64E2 /* BG2Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED07209D25CE8C67007D64E2 /* BG2Renderer.swift */; };
+		ED0720BD25CE8C67007D64E2 /* BG2PolyList.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED07209E25CE8C67007D64E2 /* BG2PolyList.swift */; };
+		ED0720BE25CE8C67007D64E2 /* BG2PolyList.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED07209E25CE8C67007D64E2 /* BG2PolyList.swift */; };
+		ED0720D125CE96AE007D64E2 /* test-shape.bg2 in Resources */ = {isa = PBXBuildFile; fileRef = ED0720C725CE96AD007D64E2 /* test-shape.bg2 */; };
+		ED0720D225CE96AE007D64E2 /* test-shape.bg2 in Resources */ = {isa = PBXBuildFile; fileRef = ED0720C725CE96AD007D64E2 /* test-shape.bg2 */; };
+		ED0720D325CE96AE007D64E2 /* test_cube_None_Roughness.png in Resources */ = {isa = PBXBuildFile; fileRef = ED0720C825CE96AD007D64E2 /* test_cube_None_Roughness.png */; };
+		ED0720D425CE96AE007D64E2 /* test_cube_None_Roughness.png in Resources */ = {isa = PBXBuildFile; fileRef = ED0720C825CE96AD007D64E2 /* test_cube_None_Roughness.png */; };
+		ED0720D525CE96AE007D64E2 /* test_cube_None_Normal.png in Resources */ = {isa = PBXBuildFile; fileRef = ED0720C925CE96AD007D64E2 /* test_cube_None_Normal.png */; };
+		ED0720D625CE96AE007D64E2 /* test_cube_None_Normal.png in Resources */ = {isa = PBXBuildFile; fileRef = ED0720C925CE96AD007D64E2 /* test_cube_None_Normal.png */; };
+		ED0720D725CE96AE007D64E2 /* test_cube_None_BaseColor.png in Resources */ = {isa = PBXBuildFile; fileRef = ED0720CA25CE96AE007D64E2 /* test_cube_None_BaseColor.png */; };
+		ED0720D825CE96AE007D64E2 /* test_cube_None_BaseColor.png in Resources */ = {isa = PBXBuildFile; fileRef = ED0720CA25CE96AE007D64E2 /* test_cube_None_BaseColor.png */; };
+		ED0720D925CE96AE007D64E2 /* texture_nm.png in Resources */ = {isa = PBXBuildFile; fileRef = ED0720CB25CE96AE007D64E2 /* texture_nm.png */; };
+		ED0720DA25CE96AE007D64E2 /* texture_nm.png in Resources */ = {isa = PBXBuildFile; fileRef = ED0720CB25CE96AE007D64E2 /* texture_nm.png */; };
+		ED0720DB25CE96AE007D64E2 /* test_cube_None_Metallic.png in Resources */ = {isa = PBXBuildFile; fileRef = ED0720CC25CE96AE007D64E2 /* test_cube_None_Metallic.png */; };
+		ED0720DC25CE96AE007D64E2 /* test_cube_None_Metallic.png in Resources */ = {isa = PBXBuildFile; fileRef = ED0720CC25CE96AE007D64E2 /* test_cube_None_Metallic.png */; };
+		ED0720DD25CE96AE007D64E2 /* texture_reflection_mask.png in Resources */ = {isa = PBXBuildFile; fileRef = ED0720CD25CE96AE007D64E2 /* texture_reflection_mask.png */; };
+		ED0720DE25CE96AE007D64E2 /* texture_reflection_mask.png in Resources */ = {isa = PBXBuildFile; fileRef = ED0720CD25CE96AE007D64E2 /* texture_reflection_mask.png */; };
+		ED0720DF25CE96AE007D64E2 /* test_cube.bg2 in Resources */ = {isa = PBXBuildFile; fileRef = ED0720CE25CE96AE007D64E2 /* test_cube.bg2 */; };
+		ED0720E025CE96AE007D64E2 /* test_cube.bg2 in Resources */ = {isa = PBXBuildFile; fileRef = ED0720CE25CE96AE007D64E2 /* test_cube.bg2 */; };
+		ED0720E125CE96AE007D64E2 /* texture_bm.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ED0720CF25CE96AE007D64E2 /* texture_bm.jpg */; };
+		ED0720E225CE96AE007D64E2 /* texture_bm.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ED0720CF25CE96AE007D64E2 /* texture_bm.jpg */; };
+		ED0720E325CE96AE007D64E2 /* texture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ED0720D025CE96AE007D64E2 /* texture.jpg */; };
+		ED0720E425CE96AE007D64E2 /* texture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ED0720D025CE96AE007D64E2 /* texture.jpg */; };
+		ED0720E825CE9724007D64E2 /* RotatingComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0720E725CE9724007D64E2 /* RotatingComponent.swift */; };
+		ED0720E925CE9724007D64E2 /* RotatingComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0720E725CE9724007D64E2 /* RotatingComponent.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		ED07205E25CE8A8A007D64E2 /* iOS Playground.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS Playground.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED07206125CE8A8A007D64E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		ED07206325CE8A8A007D64E2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		ED07206525CE8A8A007D64E2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		ED07206825CE8A8A007D64E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		ED07206A25CE8A8B007D64E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		ED07206D25CE8A8B007D64E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		ED07206F25CE8A8B007D64E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ED07207825CE8A9D007D64E2 /* Mac Playground.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mac Playground.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED07207A25CE8A9D007D64E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		ED07207C25CE8A9D007D64E2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		ED07207E25CE8A9E007D64E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		ED07208125CE8A9E007D64E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		ED07208325CE8A9E007D64E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ED07208425CE8A9E007D64E2 /* Mac_Playground.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Mac_Playground.entitlements; sourceTree = "<group>"; };
+		ED07208C25CE8C67007D64E2 /* Shader.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Shader.metal; sourceTree = "<group>"; };
+		ED07208D25CE8C67007D64E2 /* ShaderCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShaderCommon.h; sourceTree = "<group>"; };
+		ED07208E25CE8C67007D64E2 /* Lighting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lighting.h; sourceTree = "<group>"; };
+		ED07208F25CE8C67007D64E2 /* Lighting.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Lighting.metal; sourceTree = "<group>"; };
+		ED07209125CE8C67007D64E2 /* BG2SceneComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BG2SceneComponent.swift; sourceTree = "<group>"; };
+		ED07209225CE8C67007D64E2 /* BG2SceneObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BG2SceneObject.swift; sourceTree = "<group>"; };
+		ED07209325CE8C67007D64E2 /* BG2CameraComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BG2CameraComponent.swift; sourceTree = "<group>"; };
+		ED07209425CE8C67007D64E2 /* BG2DrawableComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BG2DrawableComponent.swift; sourceTree = "<group>"; };
+		ED07209525CE8C67007D64E2 /* BG2TransformComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BG2TransformComponent.swift; sourceTree = "<group>"; };
+		ED07209625CE8C67007D64E2 /* BG2LightComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BG2LightComponent.swift; sourceTree = "<group>"; };
+		ED07209725CE8C67007D64E2 /* BG2DrawableItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BG2DrawableItem.swift; sourceTree = "<group>"; };
+		ED07209825CE8C67007D64E2 /* BG2Material.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BG2Material.swift; sourceTree = "<group>"; };
+		ED07209925CE8C67007D64E2 /* BG2ModelLoad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BG2ModelLoad.swift; sourceTree = "<group>"; };
+		ED07209A25CE8C67007D64E2 /* MathExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MathExtensions.swift; sourceTree = "<group>"; };
+		ED07209B25CE8C67007D64E2 /* BG2ShaderFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BG2ShaderFactory.swift; sourceTree = "<group>"; };
+		ED07209C25CE8C67007D64E2 /* BG2Light.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BG2Light.swift; sourceTree = "<group>"; };
+		ED07209D25CE8C67007D64E2 /* BG2Renderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BG2Renderer.swift; sourceTree = "<group>"; };
+		ED07209E25CE8C67007D64E2 /* BG2PolyList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BG2PolyList.swift; sourceTree = "<group>"; };
+		ED0720C725CE96AD007D64E2 /* test-shape.bg2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "test-shape.bg2"; sourceTree = "<group>"; };
+		ED0720C825CE96AD007D64E2 /* test_cube_None_Roughness.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_cube_None_Roughness.png; sourceTree = "<group>"; };
+		ED0720C925CE96AD007D64E2 /* test_cube_None_Normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_cube_None_Normal.png; sourceTree = "<group>"; };
+		ED0720CA25CE96AE007D64E2 /* test_cube_None_BaseColor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_cube_None_BaseColor.png; sourceTree = "<group>"; };
+		ED0720CB25CE96AE007D64E2 /* texture_nm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = texture_nm.png; sourceTree = "<group>"; };
+		ED0720CC25CE96AE007D64E2 /* test_cube_None_Metallic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_cube_None_Metallic.png; sourceTree = "<group>"; };
+		ED0720CD25CE96AE007D64E2 /* texture_reflection_mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = texture_reflection_mask.png; sourceTree = "<group>"; };
+		ED0720CE25CE96AE007D64E2 /* test_cube.bg2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = test_cube.bg2; sourceTree = "<group>"; };
+		ED0720CF25CE96AE007D64E2 /* texture_bm.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = texture_bm.jpg; sourceTree = "<group>"; };
+		ED0720D025CE96AE007D64E2 /* texture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = texture.jpg; sourceTree = "<group>"; };
+		ED0720E725CE9724007D64E2 /* RotatingComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotatingComponent.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		ED07205B25CE8A8A007D64E2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ED07207525CE8A9D007D64E2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		ED07205325CE8A5B007D64E2 = {
+			isa = PBXGroup;
+			children = (
+				ED07208A25CE8C3C007D64E2 /* bg2e */,
+				ED0720C325CE9552007D64E2 /* Common */,
+				ED07206025CE8A8A007D64E2 /* iOS Playground */,
+				ED07207925CE8A9D007D64E2 /* Mac Playground */,
+				ED07205F25CE8A8A007D64E2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		ED07205F25CE8A8A007D64E2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				ED07205E25CE8A8A007D64E2 /* iOS Playground.app */,
+				ED07207825CE8A9D007D64E2 /* Mac Playground.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		ED07206025CE8A8A007D64E2 /* iOS Playground */ = {
+			isa = PBXGroup;
+			children = (
+				ED07206125CE8A8A007D64E2 /* AppDelegate.swift */,
+				ED07206325CE8A8A007D64E2 /* SceneDelegate.swift */,
+				ED07206525CE8A8A007D64E2 /* ViewController.swift */,
+				ED07206725CE8A8A007D64E2 /* Main.storyboard */,
+				ED07206A25CE8A8B007D64E2 /* Assets.xcassets */,
+				ED07206C25CE8A8B007D64E2 /* LaunchScreen.storyboard */,
+				ED07206F25CE8A8B007D64E2 /* Info.plist */,
+			);
+			path = "iOS Playground";
+			sourceTree = "<group>";
+		};
+		ED07207925CE8A9D007D64E2 /* Mac Playground */ = {
+			isa = PBXGroup;
+			children = (
+				ED07207A25CE8A9D007D64E2 /* AppDelegate.swift */,
+				ED07207C25CE8A9D007D64E2 /* ViewController.swift */,
+				ED07207E25CE8A9E007D64E2 /* Assets.xcassets */,
+				ED07208025CE8A9E007D64E2 /* Main.storyboard */,
+				ED07208325CE8A9E007D64E2 /* Info.plist */,
+				ED07208425CE8A9E007D64E2 /* Mac_Playground.entitlements */,
+			);
+			path = "Mac Playground";
+			sourceTree = "<group>";
+		};
+		ED07208A25CE8C3C007D64E2 /* bg2e */ = {
+			isa = PBXGroup;
+			children = (
+				ED07208B25CE8C67007D64E2 /* Shaders */,
+				ED07209025CE8C67007D64E2 /* Source */,
+			);
+			path = bg2e;
+			sourceTree = "<group>";
+		};
+		ED07208B25CE8C67007D64E2 /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				ED07208C25CE8C67007D64E2 /* Shader.metal */,
+				ED07208D25CE8C67007D64E2 /* ShaderCommon.h */,
+				ED07208E25CE8C67007D64E2 /* Lighting.h */,
+				ED07208F25CE8C67007D64E2 /* Lighting.metal */,
+			);
+			path = Shaders;
+			sourceTree = "<group>";
+		};
+		ED07209025CE8C67007D64E2 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				ED07209125CE8C67007D64E2 /* BG2SceneComponent.swift */,
+				ED07209225CE8C67007D64E2 /* BG2SceneObject.swift */,
+				ED07209325CE8C67007D64E2 /* BG2CameraComponent.swift */,
+				ED07209425CE8C67007D64E2 /* BG2DrawableComponent.swift */,
+				ED07209525CE8C67007D64E2 /* BG2TransformComponent.swift */,
+				ED07209625CE8C67007D64E2 /* BG2LightComponent.swift */,
+				ED07209725CE8C67007D64E2 /* BG2DrawableItem.swift */,
+				ED07209825CE8C67007D64E2 /* BG2Material.swift */,
+				ED07209925CE8C67007D64E2 /* BG2ModelLoad.swift */,
+				ED07209A25CE8C67007D64E2 /* MathExtensions.swift */,
+				ED07209B25CE8C67007D64E2 /* BG2ShaderFactory.swift */,
+				ED07209C25CE8C67007D64E2 /* BG2Light.swift */,
+				ED07209D25CE8C67007D64E2 /* BG2Renderer.swift */,
+				ED07209E25CE8C67007D64E2 /* BG2PolyList.swift */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		ED0720C325CE9552007D64E2 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				ED0720E725CE9724007D64E2 /* RotatingComponent.swift */,
+				ED0720C625CE9693007D64E2 /* data */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		ED0720C625CE9693007D64E2 /* data */ = {
+			isa = PBXGroup;
+			children = (
+				ED0720CA25CE96AE007D64E2 /* test_cube_None_BaseColor.png */,
+				ED0720CC25CE96AE007D64E2 /* test_cube_None_Metallic.png */,
+				ED0720C925CE96AD007D64E2 /* test_cube_None_Normal.png */,
+				ED0720C825CE96AD007D64E2 /* test_cube_None_Roughness.png */,
+				ED0720CE25CE96AE007D64E2 /* test_cube.bg2 */,
+				ED0720C725CE96AD007D64E2 /* test-shape.bg2 */,
+				ED0720CF25CE96AE007D64E2 /* texture_bm.jpg */,
+				ED0720CB25CE96AE007D64E2 /* texture_nm.png */,
+				ED0720CD25CE96AE007D64E2 /* texture_reflection_mask.png */,
+				ED0720D025CE96AE007D64E2 /* texture.jpg */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		ED07205D25CE8A8A007D64E2 /* iOS Playground */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ED07207025CE8A8B007D64E2 /* Build configuration list for PBXNativeTarget "iOS Playground" */;
+			buildPhases = (
+				ED07205A25CE8A8A007D64E2 /* Sources */,
+				ED07205B25CE8A8A007D64E2 /* Frameworks */,
+				ED07205C25CE8A8A007D64E2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "iOS Playground";
+			productName = "iOS Playground";
+			productReference = ED07205E25CE8A8A007D64E2 /* iOS Playground.app */;
+			productType = "com.apple.product-type.application";
+		};
+		ED07207725CE8A9D007D64E2 /* Mac Playground */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ED07208525CE8A9E007D64E2 /* Build configuration list for PBXNativeTarget "Mac Playground" */;
+			buildPhases = (
+				ED07207425CE8A9D007D64E2 /* Sources */,
+				ED07207525CE8A9D007D64E2 /* Frameworks */,
+				ED07207625CE8A9D007D64E2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Mac Playground";
+			productName = "Mac Playground";
+			productReference = ED07207825CE8A9D007D64E2 /* Mac Playground.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		ED07205425CE8A5B007D64E2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
+				TargetAttributes = {
+					ED07205D25CE8A8A007D64E2 = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					ED07207725CE8A9D007D64E2 = {
+						CreatedOnToolsVersion = 12.4;
+					};
+				};
+			};
+			buildConfigurationList = ED07205725CE8A5B007D64E2 /* Build configuration list for PBXProject "bg2e" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = ED07205325CE8A5B007D64E2;
+			productRefGroup = ED07205F25CE8A8A007D64E2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				ED07205D25CE8A8A007D64E2 /* iOS Playground */,
+				ED07207725CE8A9D007D64E2 /* Mac Playground */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		ED07205C25CE8A8A007D64E2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED0720DD25CE96AE007D64E2 /* texture_reflection_mask.png in Resources */,
+				ED07206E25CE8A8B007D64E2 /* LaunchScreen.storyboard in Resources */,
+				ED0720DB25CE96AE007D64E2 /* test_cube_None_Metallic.png in Resources */,
+				ED0720D325CE96AE007D64E2 /* test_cube_None_Roughness.png in Resources */,
+				ED0720D125CE96AE007D64E2 /* test-shape.bg2 in Resources */,
+				ED0720DF25CE96AE007D64E2 /* test_cube.bg2 in Resources */,
+				ED0720E325CE96AE007D64E2 /* texture.jpg in Resources */,
+				ED07206B25CE8A8B007D64E2 /* Assets.xcassets in Resources */,
+				ED0720D925CE96AE007D64E2 /* texture_nm.png in Resources */,
+				ED0720E125CE96AE007D64E2 /* texture_bm.jpg in Resources */,
+				ED0720D725CE96AE007D64E2 /* test_cube_None_BaseColor.png in Resources */,
+				ED07206925CE8A8A007D64E2 /* Main.storyboard in Resources */,
+				ED0720D525CE96AE007D64E2 /* test_cube_None_Normal.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ED07207625CE8A9D007D64E2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED07207F25CE8A9E007D64E2 /* Assets.xcassets in Resources */,
+				ED0720DE25CE96AE007D64E2 /* texture_reflection_mask.png in Resources */,
+				ED0720E025CE96AE007D64E2 /* test_cube.bg2 in Resources */,
+				ED0720E425CE96AE007D64E2 /* texture.jpg in Resources */,
+				ED0720D825CE96AE007D64E2 /* test_cube_None_BaseColor.png in Resources */,
+				ED0720D425CE96AE007D64E2 /* test_cube_None_Roughness.png in Resources */,
+				ED0720DA25CE96AE007D64E2 /* texture_nm.png in Resources */,
+				ED0720D225CE96AE007D64E2 /* test-shape.bg2 in Resources */,
+				ED0720E225CE96AE007D64E2 /* texture_bm.jpg in Resources */,
+				ED0720DC25CE96AE007D64E2 /* test_cube_None_Metallic.png in Resources */,
+				ED0720D625CE96AE007D64E2 /* test_cube_None_Normal.png in Resources */,
+				ED07208225CE8A9E007D64E2 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		ED07205A25CE8A8A007D64E2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED0720A325CE8C67007D64E2 /* BG2SceneComponent.swift in Sources */,
+				ED0720B325CE8C67007D64E2 /* BG2ModelLoad.swift in Sources */,
+				ED07209F25CE8C67007D64E2 /* Shader.metal in Sources */,
+				ED0720A725CE8C67007D64E2 /* BG2CameraComponent.swift in Sources */,
+				ED0720A925CE8C67007D64E2 /* BG2DrawableComponent.swift in Sources */,
+				ED0720E825CE9724007D64E2 /* RotatingComponent.swift in Sources */,
+				ED0720AF25CE8C67007D64E2 /* BG2DrawableItem.swift in Sources */,
+				ED0720AB25CE8C67007D64E2 /* BG2TransformComponent.swift in Sources */,
+				ED0720B925CE8C67007D64E2 /* BG2Light.swift in Sources */,
+				ED0720A125CE8C67007D64E2 /* Lighting.metal in Sources */,
+				ED07206625CE8A8A007D64E2 /* ViewController.swift in Sources */,
+				ED0720A525CE8C67007D64E2 /* BG2SceneObject.swift in Sources */,
+				ED0720B125CE8C67007D64E2 /* BG2Material.swift in Sources */,
+				ED0720B725CE8C67007D64E2 /* BG2ShaderFactory.swift in Sources */,
+				ED0720AD25CE8C67007D64E2 /* BG2LightComponent.swift in Sources */,
+				ED0720BB25CE8C67007D64E2 /* BG2Renderer.swift in Sources */,
+				ED07206225CE8A8A007D64E2 /* AppDelegate.swift in Sources */,
+				ED07206425CE8A8A007D64E2 /* SceneDelegate.swift in Sources */,
+				ED0720B525CE8C67007D64E2 /* MathExtensions.swift in Sources */,
+				ED0720BD25CE8C67007D64E2 /* BG2PolyList.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ED07207425CE8A9D007D64E2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED0720A025CE8C67007D64E2 /* Shader.metal in Sources */,
+				ED0720B425CE8C67007D64E2 /* BG2ModelLoad.swift in Sources */,
+				ED0720A625CE8C67007D64E2 /* BG2SceneObject.swift in Sources */,
+				ED0720BE25CE8C67007D64E2 /* BG2PolyList.swift in Sources */,
+				ED0720AE25CE8C67007D64E2 /* BG2LightComponent.swift in Sources */,
+				ED0720AC25CE8C67007D64E2 /* BG2TransformComponent.swift in Sources */,
+				ED0720A225CE8C67007D64E2 /* Lighting.metal in Sources */,
+				ED0720BC25CE8C67007D64E2 /* BG2Renderer.swift in Sources */,
+				ED0720B025CE8C67007D64E2 /* BG2DrawableItem.swift in Sources */,
+				ED0720B825CE8C67007D64E2 /* BG2ShaderFactory.swift in Sources */,
+				ED0720B225CE8C67007D64E2 /* BG2Material.swift in Sources */,
+				ED0720E925CE9724007D64E2 /* RotatingComponent.swift in Sources */,
+				ED0720A425CE8C67007D64E2 /* BG2SceneComponent.swift in Sources */,
+				ED07207D25CE8A9D007D64E2 /* ViewController.swift in Sources */,
+				ED0720AA25CE8C67007D64E2 /* BG2DrawableComponent.swift in Sources */,
+				ED0720BA25CE8C67007D64E2 /* BG2Light.swift in Sources */,
+				ED0720A825CE8C67007D64E2 /* BG2CameraComponent.swift in Sources */,
+				ED07207B25CE8A9D007D64E2 /* AppDelegate.swift in Sources */,
+				ED0720B625CE8C67007D64E2 /* MathExtensions.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		ED07206725CE8A8A007D64E2 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ED07206825CE8A8A007D64E2 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		ED07206C25CE8A8B007D64E2 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ED07206D25CE8A8B007D64E2 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		ED07208025CE8A9E007D64E2 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ED07208125CE8A9E007D64E2 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		ED07205825CE8A5B007D64E2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		ED07205925CE8A5B007D64E2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		ED07207125CE8A8B007D64E2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = RP926KEE5K;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "iOS Playground/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bg2engine.iOS-Playground";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = bg2e/Shaders/ShaderCommon.h;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		ED07207225CE8A8B007D64E2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = RP926KEE5K;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "iOS Playground/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bg2engine.iOS-Playground";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OBJC_BRIDGING_HEADER = bg2e/Shaders/ShaderCommon.h;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		ED07208625CE8A9E007D64E2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = "Mac Playground/Mac_Playground.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = RP926KEE5K;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "Mac Playground/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bg2engine.Mac-Playground";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = bg2e/Shaders/ShaderCommon.h;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		ED07208725CE8A9E007D64E2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = "Mac Playground/Mac_Playground.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = RP926KEE5K;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "Mac Playground/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bg2engine.Mac-Playground";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OBJC_BRIDGING_HEADER = bg2e/Shaders/ShaderCommon.h;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		ED07205725CE8A5B007D64E2 /* Build configuration list for PBXProject "bg2e" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ED07205825CE8A5B007D64E2 /* Debug */,
+				ED07205925CE8A5B007D64E2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ED07207025CE8A8B007D64E2 /* Build configuration list for PBXNativeTarget "iOS Playground" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ED07207125CE8A8B007D64E2 /* Debug */,
+				ED07207225CE8A8B007D64E2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ED07208525CE8A9E007D64E2 /* Build configuration list for PBXNativeTarget "Mac Playground" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ED07208625CE8A9E007D64E2 /* Debug */,
+				ED07208725CE8A9E007D64E2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = ED07205425CE8A5B007D64E2 /* Project object */;
+}
