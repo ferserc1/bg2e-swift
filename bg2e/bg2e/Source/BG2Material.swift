@@ -295,6 +295,18 @@ public extension BG2Material {
         var property = albedoTexture != nil
         functionConstants.setConstantValue(&property, type: .bool, index: Int(FuncConstColorTextureIndex.rawValue))
         
+        property = metallicTexture != nil
+        functionConstants.setConstantValue(&property, type: .bool, index: Int(FuncConstMetallicTextureIndex.rawValue))
+
+        property = roughnessTexture != nil
+        functionConstants.setConstantValue(&property, type: .bool, index: Int(FuncConstRoughnessTextureIndex.rawValue))
+
+        property = ambientOcclussionTexture != nil
+        functionConstants.setConstantValue(&property, type: .bool, index: Int(FuncConstAOTextureIndex.rawValue))
+
+        property = normalTexture != nil
+        functionConstants.setConstantValue(&property, type: .bool, index: Int(FuncConstNormalTextureIndex.rawValue))
+                
         return functionConstants
     }
 }
@@ -303,9 +315,10 @@ extension BG2Material {
     func draw(encoder: MTLRenderCommandEncoder) {
         encoder.setFragmentBytes(&self.material, length: MemoryLayout<ShaderMaterial>.stride, index: Int(PBRMaterialUniformIndex.rawValue))
         encoder.setFragmentTexture(self.albedoTexture, index: Int(AlbedoTextureIndex.rawValue))
-        
-        // TODO: other textures
-        // TODO: function constants
+        encoder.setFragmentTexture(self.metallicTexture, index: Int(MetallicTextureIndex.rawValue))
+        encoder.setFragmentTexture(self.roughnessTexture, index: Int(RoughnessTextureIndex.rawValue))
+        encoder.setFragmentTexture(self.normalTexture, index: Int(NormalTextureIndex.rawValue))
+        encoder.setFragmentTexture(self.ambientOcclussionTexture, index: Int(AOTextureIndex.rawValue))
     }
 }
 

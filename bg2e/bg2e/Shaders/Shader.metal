@@ -14,10 +14,10 @@ using namespace metal;
 #import "ShaderCommon.h"
 
 constant bool hasColorTexture [[function_constant(FuncConstColorTextureIndex)]];
-//constant bool hasNormalTexture [[function_constant(FuncConstNormalTextureIndex)]];
-//constant bool hasRoughnessTexture [[function_constant(FuncConstRoughnessTextureIndex)]];
-//constant bool hasMetallicTexture [[function_constant(FuncConstMetallicTextureIndex)]];
-//constant bool hasAOTexture [[function_constant(FuncConstAOTextureIndex)]];
+constant bool hasNormalTexture [[function_constant(FuncConstNormalTextureIndex)]];
+constant bool hasRoughnessTexture [[function_constant(FuncConstRoughnessTextureIndex)]];
+constant bool hasMetallicTexture [[function_constant(FuncConstMetallicTextureIndex)]];
+constant bool hasAOTexture [[function_constant(FuncConstAOTextureIndex)]];
 
 struct VertexIn {
     float4 position [[ attribute(PositionAttribIndex) ]];
@@ -54,11 +54,17 @@ fragment float4 fragment_main(
     constant ShaderLight *lights [[ buffer(LightUniformIndex) ]],
     constant BasicShaderFragmentUniforms &fragmentUniforms [[ buffer(FragmentUniformIndex) ]],
     constant ShaderMaterial &material [[ buffer(PBRMaterialUniformIndex) ]],
-    texture2d<float> albedoTexture [[ texture(AlbedoTextureIndex), function_constant(hasColorTexture) ]])
+    texture2d<float> albedoTexture [[ texture(AlbedoTextureIndex), function_constant(hasColorTexture) ]],
+    texture2d<float> metallicTexture [[ texture(MetallicTextureIndex), function_constant(hasMetallicTexture) ]],
+    texture2d<float> roughnessTexture [[ texture(RoughnessTextureIndex), function_constant(hasRoughnessTexture) ]],
+    texture2d<float> normalTexture [[ texture(NormalTextureIndex), function_constant(hasNormalTexture) ]],
+    texture2d<float> aoTexture [[ texture(AOTextureIndex), function_constant(hasAOTexture) ]])
 {
     constexpr sampler defaultSampler;
     Lighting lighting;
-    lighting.baseColor = (hasColorTexture ? albedoTexture.sample(defaultSampler, in.uv0) : material.albedo).rgb;
+    //lighting.baseColor = (hasColorTexture ? albedoTexture.sample(defaultSampler, in.uv0) : material.albedo).rgb;
+    
+    lighting.baseColor = (hasNormalTexture ? normalTexture.sample(defaultSampler, in.uv0) : material.albedo).rgb;
     
     return float4(basicPBRLight(lighting), 1.0);
 }
