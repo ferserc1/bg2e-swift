@@ -145,7 +145,7 @@ extension BG2PolyList {
         }
         
         tangents = []
-        var generatedIndexes: [Int:SIMD3<Float>] = [:]
+        var generatedIndexes: [Int:vector_float3] = [:]
         for i in stride(from: 0, to: indexes.count, by: 3) {
             let v0i = Int(indexes[i] * 3)
             let v1i = Int(indexes[i + 1] * 3)
@@ -155,13 +155,13 @@ extension BG2PolyList {
             let t1i = Int(indexes[i + 1] * 2)
             let t2i = Int(indexes[i + 2] * 2)
             
-            let v0 = SIMD3<Float>(vertices[v0i], vertices[v0i + 1], vertices[v0i + 2])
-            let v1 = SIMD3<Float>(vertices[v1i], vertices[v1i + 1], vertices[v1i + 2])
-            let v2 = SIMD3<Float>(vertices[v2i], vertices[v2i + 1], vertices[v2i + 2])
+            let v0 = vector_float3(vertices[v0i], vertices[v0i + 1], vertices[v0i + 2])
+            let v1 = vector_float3(vertices[v1i], vertices[v1i + 1], vertices[v1i + 2])
+            let v2 = vector_float3(vertices[v2i], vertices[v2i + 1], vertices[v2i + 2])
         
-            let t0 = SIMD2<Float>(tex0Coords[t0i], tex0Coords[t0i + 1])
-            let t1 = SIMD2<Float>(tex0Coords[t1i], tex0Coords[t1i + 1])
-            let t2 = SIMD2<Float>(tex0Coords[t2i], tex0Coords[t2i + 1])
+            let t0 = vector_float2(tex0Coords[t0i], tex0Coords[t0i + 1])
+            let t1 = vector_float2(tex0Coords[t1i], tex0Coords[t1i + 1])
+            let t2 = vector_float2(tex0Coords[t2i], tex0Coords[t2i + 1])
             
             let edge1 = v1 - v0
             let edge2 = v2 - v0
@@ -172,13 +172,13 @@ extension BG2PolyList {
             let deltaV2 = t2.y - t0.y
             
             let den = deltaU1 * deltaV2 - deltaU2 * deltaV1
-            let tangent: SIMD3<Float>
+            let tangent: vector_float3
             if den == 0 {
                 // Invalid tangent
-                tangent = SIMD3<Float>(normals[v0i], normals[v0i + 1], normals[v0i + 2])
+                tangent = vector_float3(normals[v0i], normals[v0i + 1], normals[v0i + 2])
             } else {
                 let f: Float = 1 / den
-                tangent = simd_normalize(SIMD3<Float>(
+                tangent = simd_normalize(vector_float3(
                     f * (deltaV2 * edge1.x - deltaV1 * edge2.x),
                     f * (deltaV2 * edge1.y - deltaV1 * edge2.y),
                     f * (deltaV2 * edge1.z - deltaV1 * edge2.z)

@@ -68,7 +68,7 @@ public class BG2DrawableItem {
         var uniforms = MatrixState(model: itemWorldMatrix,
                                    view: viewMatrix,
                                    projection: projectionMatrix,
-                                   normal: matrix_float3x3.init(normalFrom4x4: self.transform))
+                                   normal: matrix_float3x3.init(normalFrom4x4: itemWorldMatrix))
         
         renderEncoder.setVertexBytes(&uniforms,
                                      length: MemoryLayout<MatrixState>.stride,

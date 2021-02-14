@@ -24,7 +24,8 @@ extension RendererDelegate: BG2RendererDelegate {
         
         var transform = BG2TransformComponent()
         transform.matrix =
-            matrix_float4x4.init(translate: SIMD3<Float>(0,1,-3)) *
+            matrix_float4x4.init(translate: SIMD3<Float>(0,1,4)) *
+            matrix_float4x4.init(rotationY: Float(180).degreesToRadians) *
             matrix_float4x4.init(rotationX: Float(12).degreesToRadians)
         
         cameraNode.addComponent(transform)

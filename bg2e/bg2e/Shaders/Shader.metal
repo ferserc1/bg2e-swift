@@ -46,8 +46,8 @@ vertex VertexOut vertex_main(const VertexIn vertexIn [[ stage_in ]],
     result.worldNormal =  matrixState.normal * normalize(vertexIn.normal);
     result.uv0 = vertexIn.uv0;
     result.uv1 = vertexIn.uv1;
-    result.worldTangent = (matrixState.normal * vertexIn.tangent).xyz;
-    result.worldBitangent = (matrixState.normal * (vertexIn.normal * vertexIn.tangent)).xyz;
+    result.worldTangent = (matrixState.normal * normalize(vertexIn.tangent)).xyz;
+    result.worldBitangent = result.worldNormal * result.worldTangent;
     return result;
 }
 
@@ -107,6 +107,8 @@ fragment float4 fragment_main(
         normal = in.worldNormal;
     }
     normal = normalize(normal);
+    
+    return float4(normal, 1.0);
     
     float3 viewDirection = normalize(fragmentUniforms.cameraPosition - in.worldPosition);
 
