@@ -8,7 +8,15 @@
 
 import Foundation
 import Metal
+import MetalKit
 import simd
+
+struct Vertex {
+    let position: vector_float3
+    let normal: vector_float3
+    let uv0: vector_float2
+    let uv1: vector_float2
+}
 
 public class BG2PolyList {
     public var vertices: [Float]?
@@ -29,21 +37,107 @@ public class BG2PolyList {
     var tangentBuffer: MTLBuffer!
     var indexBuffer: MTLBuffer!
     
-    var vertexDescriptor: MTLVertexDescriptor!
+    //var vertexDescriptor: MTLVertexDescriptor!
+    
+    
+    // New stuffs
+    var vertexData: [Vertex] = []
+    
+    var mdlMesh: MDLMesh?
+    var mesh: MTKMesh?
     
     public init() {
         
     }
     
-    public init(vertices: [Float], normals: [Float], tex0: [Float], tex1: [Float]!, indexes:[UInt32]) {
+    public init(vertices: [Float], normals: [Float], tex0: [Float], optTex1: [Float]!, indexes:[UInt32]) {
         self.vertices = vertices
         self.normals = normals
         self.tex0Coords = tex0
-        self.tex1Coords = tex1
+        self.tex1Coords = optTex1
         self.indexes = indexes
     }
     
+    public func buildMesh(device: MTLDevice) {
+        guard let tex0 = tex0Coords,
+              let tex1 = (tex1Coords != nil && tex1Coords!.count>0) ? tex1Coords : tex0,
+              let vertices = self.vertices,
+              let normals = self.normals else {
+            return;
+        }
+        
+        var j = 0;
+        for i in stride(from: 0, to: vertices.count, by: 3) {
+            let pos = vector_float3(vertices[i], vertices[i+1],vertices[i+2])
+            let nor = vector_float3(normals[i], normals[i+1],normals[i+2])
+            let uv0 = vector_float2(tex0[j], tex0[j+1])
+            let uv1 = vector_float2(tex1[j], tex1[j+1])
+            vertexData.append(Vertex(position: pos,
+                                     normal: nor,
+                                     uv0: uv0,
+                                     uv1: uv1))
+            j += 2
+        }
+        
+        guard let indexes = self.indexes else {
+            fatalError("Could no create mesh: no index data specified")
+        }
+        let allocator = MTKMeshBufferAllocator(device: device)
+        let vertexBuffer = allocator.newBuffer(MemoryLayout<Vertex>.size * vertexData.count, type: .vertex)
+        let vertexMap = vertexBuffer.map()
+        vertexMap.bytes.assumingMemoryBound(to: Vertex.self).assign(from: vertexData, count: vertexData.count)
+        
+        let indexBuffer = allocator.newBuffer(MemoryLayout<UInt32>.size * indexes.count, type: .index)
+        let indexMap = indexBuffer.map()
+        indexMap.bytes.assumingMemoryBound(to: UInt32.self).assign(from: indexes, count: indexes.count)
+        
+        let submesh = MDLSubmesh(indexBuffer: indexBuffer,
+                                 indexCount: indexes.count,
+                                 indexType: .uInt32,
+                                 geometryType: .triangles,
+                                 material: nil)
+        
+        let vertexDescriptor = MDLVertexDescriptor()
+        var offset = 0
+        vertexDescriptor.attributes[0] = MDLVertexAttribute(name: MDLVertexAttributePosition,
+                                                            format: .float3,
+                                                            offset: offset, bufferIndex: 0)
+        offset += MemoryLayout<vector_float3>.stride
+        vertexDescriptor.attributes[1] = MDLVertexAttribute(name: MDLVertexAttributeNormal,
+                                                            format: .float3,
+                                                            offset: offset, bufferIndex: 0)
+        offset += MemoryLayout<vector_float3>.stride
+        vertexDescriptor.attributes[2] = MDLVertexAttribute(name: MDLVertexAttributeTextureCoordinate,
+                                                            format: .float2,
+                                                            offset: offset, bufferIndex: 0)
+        offset += MemoryLayout<vector_float2>.stride
+        vertexDescriptor.attributes[3] = MDLVertexAttribute(name: MDLVertexAttributeTextureCoordinate,
+                                                            format: .float2,
+                                                            offset: offset, bufferIndex: 0)
+        offset += MemoryLayout<vector_float2>.stride
+        
+        vertexDescriptor.layouts[0] = MDLVertexBufferLayout(stride: MemoryLayout<Vertex>.stride)
+        
+        let mdlMesh = MDLMesh(vertexBuffer: vertexBuffer,
+                              vertexCount: vertexData.count,
+                              descriptor: vertexDescriptor,
+                              submeshes: [submesh])
+        self.mdlMesh = mdlMesh
+        guard let mesh = self.mdlMesh else {
+            fatalError("Could not create PolyList: error creating MDLMesh")
+        }
+        do {
+            self.mesh = try MTKMesh(mesh: mesh, device: device)
+        } catch {
+            fatalError("Could not create PolyList: error creating MTKMesh")
+        }
+        
+    }
+    
     public func buildPolyList(device: MTLDevice) {
+        buildMesh(device: device)
+        
+        /*
         buildTangents()
         
         guard let vertices = vertices, vertices.count % 3 == 0,
@@ -113,9 +207,24 @@ public class BG2PolyList {
         vertexDescriptor.layouts[2].stride = MemoryLayout<Float>.stride * 2 // uv0
         vertexDescriptor.layouts[3].stride = MemoryLayout<Float>.stride * 2 // uv1
         vertexDescriptor.layouts[4].stride = MemoryLayout<Float>.stride * 3 // tangent
+ */
     }
     
     public func draw(encoder: MTLRenderCommandEncoder) {
+
+        guard let mesh = self.mesh,
+              let submesh = mesh.submeshes.first else {
+            return
+        }
+        
+        encoder.setVertexBuffer(mesh.vertexBuffers[0].buffer,
+                                offset: 0, index: 0)
+        encoder.drawIndexedPrimitives(type: .triangle,
+                                      indexCount: submesh.indexCount,
+                                      indexType: submesh.indexType,
+                                      indexBuffer: submesh.indexBuffer.buffer,
+                                      indexBufferOffset: 0)
+        /*
         guard let indexes = indexes
         else {
             print("Warning: invalid buffer data in PolyList")
@@ -130,6 +239,7 @@ public class BG2PolyList {
                                       indexCount: indexes.count,
                                       indexType: .uint32,
                                       indexBuffer: indexBuffer, indexBufferOffset: 0)
+ */
     }
 }
 

@@ -20,11 +20,11 @@ constant bool hasMetallicTexture [[function_constant(FuncConstMetallicTextureInd
 constant bool hasAOTexture [[function_constant(FuncConstAOTextureIndex)]];
 
 struct VertexIn {
-    float4 position [[ attribute(PositionAttribIndex) ]];
+    float3 position [[ attribute(PositionAttribIndex) ]];
     float3 normal [[ attribute(NormalAttribIndex) ]];
     float2 uv0 [[ attribute(UV0AttribIndex) ]];
     float2 uv1 [[ attribute(UV1AttribIndex) ]];
-    float3 tangent [[ attribute(TangentAttribIndex) ]];
+    //float3 tangent [[ attribute(TangentAttribIndex) ]];
 };
 
 struct VertexOut {
@@ -33,21 +33,21 @@ struct VertexOut {
     float3 worldNormal;
     float2 uv0;
     float2 uv1;
-    float3 worldTangent;
-    float3 worldBitangent;
+    //float3 worldTangent;
+    //float3 worldBitangent;
 };
 
 vertex VertexOut vertex_main(const VertexIn vertexIn [[ stage_in ]],
                           constant MatrixState & matrixState [[ buffer(MatrixStateIndex) ]]) {
     VertexOut result;
     
-    result.worldPosition = (matrixState.model * vertexIn.position).xyz;
+    result.worldPosition = (matrixState.model * float4(vertexIn.position,1.0)).xyz;
     result.position = matrixState.projection * matrixState.view * float4(result.worldPosition,1.0);
     result.worldNormal =  matrixState.normal * normalize(vertexIn.normal);
     result.uv0 = vertexIn.uv0;
     result.uv1 = vertexIn.uv1;
-    result.worldTangent = (matrixState.normal * normalize(vertexIn.tangent)).xyz;
-    result.worldBitangent = result.worldNormal * result.worldTangent;
+    //result.worldTangent = (matrixState.normal * normalize(vertexIn.tangent)).xyz;
+    //result.worldBitangent = result.worldNormal * result.worldTangent;
     return result;
 }
 
@@ -97,15 +97,15 @@ fragment float4 fragment_main(
     }
     
     float3 normal;
-    if (hasNormalTexture) {
-        float3 normalValue = normalTexture.sample(defaultSampler, in.uv0).xyz * 2.0 -1.0;
-        normal = in.worldNormal * normalValue.z
-            + in.worldTangent * normalValue.x
-            + in.worldBitangent * normalValue.y;
-    }
-    else {
+    //if (hasNormalTexture) {
+    //    float3 normalValue = normalTexture.sample(defaultSampler, in.uv0).xyz * 2.0 -1.0;
+    //    normal = in.worldNormal * normalValue.z
+    //        + in.worldTangent * normalValue.x
+    //        + in.worldBitangent * normalValue.y;
+    //}
+    //else {
         normal = in.worldNormal;
-    }
+    //}
     normal = normalize(normal);
     
     return float4(normal, 1.0);

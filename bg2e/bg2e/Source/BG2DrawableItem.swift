@@ -52,7 +52,8 @@ public class BG2DrawableItem {
         
             // Use material and poly list properties to setup the shader
             shaderFactory.setup(pipelineDescriptor: descriptor, material: material)
-            descriptor.vertexDescriptor = polyList.vertexDescriptor
+            //descriptor.vertexDescriptor = polyList.vertexDescriptor
+            descriptor.vertexDescriptor = MTKMetalVertexDescriptorFromModelIO(polyList.mesh!.vertexDescriptor)
             
             plState = try renderer.device.makeRenderPipelineState(descriptor: descriptor)
         } catch {
