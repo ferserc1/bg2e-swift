@@ -280,7 +280,7 @@ public extension BG2ModelLoad {
     }
     
     func getMaterialWithName(_ name: String, fromDictionary dict: NSDictionary?) -> BG2Material {
-        let result = BG2Material()
+        let result = BG2Material(device: renderer.device)
         
         if dict?.value(forKey: "class") as? String == "PBRMaterial" {
             if let name = dict?.value(forKey: "name") as? String {

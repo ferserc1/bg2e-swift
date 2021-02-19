@@ -9,8 +9,12 @@
 import MetalKit
 
 public class BG2Material {
+    let device: MTLDevice
+    
     public var name: String = ""
     public var groupName: String = ""
+    
+    let samplerState: MTLSamplerState?
     
     public var albedo: vector_float4 {
         get {
@@ -219,7 +223,11 @@ public class BG2Material {
     
     private var material: ShaderMaterial
     
-    init() {
+    init(device: MTLDevice) {
+        self.device = device
+        
+        samplerState = BG2Material.buildSamplerState(device: device)
+        
         material = ShaderMaterial()
         material.albedo = vector_float4(1,1,1,1)
         material.albedoScale = vector_float2(1,1)
@@ -283,7 +291,8 @@ public extension BG2Material {
         let textureLoader = MTKTextureLoader(device: renderer.device)
         let textureLoaderOptions: [MTKTextureLoader.Option: Any] = [
             .origin: MTKTextureLoader.Origin.bottomLeft,
-            .SRGB: false
+            .SRGB: false,
+            .generateMipmaps: true
         ]
         // TODO: Texture cache
         return try textureLoader.newTexture(URL: path, options: textureLoaderOptions)
@@ -291,6 +300,17 @@ public extension BG2Material {
 }
 
 public extension BG2Material {
+    private static func buildSamplerState(device: MTLDevice) -> MTLSamplerState? {
+        let descriptor = MTLSamplerDescriptor()
+        descriptor.sAddressMode = .repeat
+        descriptor.tAddressMode = .repeat
+        descriptor.minFilter = .linear
+        descriptor.magFilter = .linear
+        descriptor.mipFilter = .linear
+        let samplerState = device.makeSamplerState(descriptor: descriptor)
+        return samplerState
+    }
+    
     func makeFunctionConstants() -> MTLFunctionConstantValues {
         let functionConstants = MTLFunctionConstantValues()
         var property = albedoTexture != nil
@@ -320,6 +340,7 @@ extension BG2Material {
         encoder.setFragmentTexture(self.roughnessTexture, index: Int(RoughnessTextureIndex.rawValue))
         encoder.setFragmentTexture(self.normalTexture, index: Int(NormalTextureIndex.rawValue))
         encoder.setFragmentTexture(self.ambientOcclussionTexture, index: Int(AOTextureIndex.rawValue))
+        encoder.setFragmentSamplerState(self.samplerState, index: 0)
     }
 }
 

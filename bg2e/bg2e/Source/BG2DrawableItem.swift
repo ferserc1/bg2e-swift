@@ -20,7 +20,7 @@ public class BG2DrawableItem {
 
     public init(polyList: BG2PolyList, renderer: BG2Renderer) {
         self.polyList = polyList
-        self.material = BG2Material()
+        self.material = BG2Material(device: renderer.device)
         self.renderer = renderer
         
         self.shaderFactory = renderer.polyListShaderFactory

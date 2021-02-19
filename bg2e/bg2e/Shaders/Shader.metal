@@ -61,14 +61,13 @@ fragment float4 fragment_main(
     texture2d<float> metallicTexture [[ texture(MetallicTextureIndex), function_constant(hasMetallicTexture) ]],
     texture2d<float> roughnessTexture [[ texture(RoughnessTextureIndex), function_constant(hasRoughnessTexture) ]],
     texture2d<float> normalTexture [[ texture(NormalTextureIndex), function_constant(hasNormalTexture) ]],
-    texture2d<float> aoTexture [[ texture(AOTextureIndex), function_constant(hasAOTexture) ]])
+    texture2d<float> aoTexture [[ texture(AOTextureIndex), function_constant(hasAOTexture) ]],
+    sampler textureSampler [[sampler(0)]])
 {
-    constexpr sampler defaultSampler;
-    
     float3 baseColor;
     float alpha;
     if (hasColorTexture) {
-        float4 c = albedoTexture.sample(defaultSampler, in.uv0);
+        float4 c = albedoTexture.sample(textureSampler, in.uv0);
         baseColor = c.rgb;
         alpha = c.a;
     } else {
@@ -78,28 +77,28 @@ fragment float4 fragment_main(
     
     float metallic;
     if (hasMetallicTexture) {
-        metallic = metallicTexture.sample(defaultSampler, in.uv0).r;
+        metallic = metallicTexture.sample(textureSampler, in.uv0).r;
     } else {
         metallic = material.metallic;
     }
     
     float roughness;
     if (hasRoughnessTexture) {
-        roughness = roughnessTexture.sample(defaultSampler, in.uv0).r;
+        roughness = roughnessTexture.sample(textureSampler, in.uv0).r;
     } else {
         roughness = material.roughness;
     }
     
     float ambientOcclusion;
     if (hasAOTexture) {
-        ambientOcclusion = aoTexture.sample(defaultSampler, in.uv0).r;
+        ambientOcclusion = aoTexture.sample(textureSampler, in.uv0).r;
     } else {
         ambientOcclusion = 1.0;
     }
     
     float3 normal;
     if (hasNormalTexture) {
-        float3 normalValue = normalTexture.sample(defaultSampler, in.uv0).xyz * 2.0 - 1.0;
+        float3 normalValue = normalTexture.sample(textureSampler, in.uv0).xyz * 2.0 - 1.0;
         normal = float3x3(in.worldTangent, in.worldBitangent, in.worldNormal) * normalValue;
     }
     else {
@@ -123,14 +122,14 @@ fragment float4 fragment_main(
     lighting.metallic = metallic;
     lighting.roughness = roughness;
     lighting.ambientOcclusion = ambientOcclusion;
-    lighting.lightColor = light.color;
+    lighting.lightColor = light.color * light.intensity;
     
     
     float3 specularOutput = basicPBRLight(lighting);
     
     // Compute lambertian deffuse
     float nDotl = max(0.001, saturate(dot(lighting.normal, lighting.lightDirection)));
-    float3 diffuseColor = light.color * baseColor * nDotl * ambientOcclusion;
+    float3 diffuseColor = light.color * light.intensity * baseColor * nDotl * ambientOcclusion;
     diffuseColor *= 1.0 - metallic;
     
     float4 finalColor = float4(specularOutput + diffuseColor, 1.0);
