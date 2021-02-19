@@ -24,9 +24,8 @@ extension RendererDelegate: BG2RendererDelegate {
         
         var transform = BG2TransformComponent()
         transform.matrix =
-            matrix_float4x4.init(translate: SIMD3<Float>(0,1,4)) *
-            matrix_float4x4.init(rotationY: Float(180).degreesToRadians) *
-            matrix_float4x4.init(rotationX: Float(12).degreesToRadians)
+            matrix_float4x4.init(translate: SIMD3<Float>(0,2,-4)) *
+            matrix_float4x4.init(rotationX: Float(22).degreesToRadians)
         
         cameraNode.addComponent(transform)
         
@@ -34,12 +33,13 @@ extension RendererDelegate: BG2RendererDelegate {
         
         let lightNode = BG2SceneObject(withRenderer: renderer)
         let light = BG2LightComponent()
+        light.light.intensity = 0.2
         lightNode.addComponent(light)
         
         transform = BG2TransformComponent()
         transform.matrix =
-            matrix_float4x4.init(rotationY: Float(33).degreesToRadians) *
-            matrix_float4x4.init(rotationX: Float(55).degreesToRadians) *
+            matrix_float4x4.init(rotationY: Float(-33).degreesToRadians) *
+            matrix_float4x4.init(rotationX: Float(65).degreesToRadians) *
             matrix_float4x4.init(translate: SIMD3<Float>(0,0,5))
         lightNode.addComponent(transform)
         //lightTransform = transform

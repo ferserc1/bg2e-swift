@@ -24,7 +24,8 @@ struct VertexIn {
     float3 normal [[ attribute(NormalAttribIndex) ]];
     float2 uv0 [[ attribute(UV0AttribIndex) ]];
     float2 uv1 [[ attribute(UV1AttribIndex) ]];
-    //float3 tangent [[ attribute(TangentAttribIndex) ]];
+    float3 tangent [[ attribute(TangentAttribIndex) ]];
+    float3 bitangent [[ attribute(BitangentAttribIndex) ]];
 };
 
 struct VertexOut {
@@ -33,8 +34,8 @@ struct VertexOut {
     float3 worldNormal;
     float2 uv0;
     float2 uv1;
-    //float3 worldTangent;
-    //float3 worldBitangent;
+    float3 worldTangent;
+    float3 worldBitangent;
 };
 
 vertex VertexOut vertex_main(const VertexIn vertexIn [[ stage_in ]],
@@ -46,8 +47,8 @@ vertex VertexOut vertex_main(const VertexIn vertexIn [[ stage_in ]],
     result.worldNormal =  matrixState.normal * normalize(vertexIn.normal);
     result.uv0 = vertexIn.uv0;
     result.uv1 = vertexIn.uv1;
-    //result.worldTangent = (matrixState.normal * normalize(vertexIn.tangent)).xyz;
-    //result.worldBitangent = result.worldNormal * result.worldTangent;
+    result.worldTangent = matrixState.normal * normalize(vertexIn.tangent);
+    result.worldBitangent = matrixState.normal * normalize(vertexIn.bitangent);
     return result;
 }
 
@@ -97,18 +98,16 @@ fragment float4 fragment_main(
     }
     
     float3 normal;
-    //if (hasNormalTexture) {
-    //    float3 normalValue = normalTexture.sample(defaultSampler, in.uv0).xyz * 2.0 -1.0;
-    //    normal = in.worldNormal * normalValue.z
-    //        + in.worldTangent * normalValue.x
-    //        + in.worldBitangent * normalValue.y;
-    //}
-    //else {
+    if (hasNormalTexture) {
+        float3 normalValue = normalTexture.sample(defaultSampler, in.uv0).xyz * 2.0 - 1.0;
+        normal = float3x3(in.worldTangent, in.worldBitangent, in.worldNormal) * normalValue;
+    }
+    else {
         normal = in.worldNormal;
-    //}
+    }
     normal = normalize(normal);
     
-    return float4(normal, 1.0);
+    //return float4(normal, 1.0);
     
     float3 viewDirection = normalize(fragmentUniforms.cameraPosition - in.worldPosition);
 

@@ -282,7 +282,8 @@ public extension BG2Material {
     func loadTexture(withPath path: URL, renderer: BG2Renderer) throws -> MTLTexture! {
         let textureLoader = MTKTextureLoader(device: renderer.device)
         let textureLoaderOptions: [MTKTextureLoader.Option: Any] = [
-            .origin: MTKTextureLoader.Origin.bottomLeft
+            .origin: MTKTextureLoader.Origin.bottomLeft,
+            .SRGB: false
         ]
         // TODO: Texture cache
         return try textureLoader.newTexture(URL: path, options: textureLoaderOptions)

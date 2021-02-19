@@ -30,7 +30,8 @@ typedef enum {
     NormalAttribIndex = 1,
     UV0AttribIndex = 2,
     UV1AttribIndex = 3,
-    TangentAttribIndex = 4
+    TangentAttribIndex = 4,
+    BitangentAttribIndex = 5
 } Attributes;
 
 typedef enum {

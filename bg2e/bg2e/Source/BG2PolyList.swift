@@ -115,13 +115,27 @@ public class BG2PolyList {
                                                             format: .float2,
                                                             offset: offset, bufferIndex: 0)
         offset += MemoryLayout<vector_float2>.stride
-        
+//        vertexDescriptor.attributes[4] = MDLVertexAttribute(name: MDLVertexAttributeTangent,
+//                                                            format: .float3,
+//                                                            offset: offset, bufferIndex: 0)
+//
+//        offset += MemoryLayout<vector_float3>.stride
+//        vertexDescriptor.attributes[5] = MDLVertexAttribute(name: MDLVertexAttributeBitangent,
+//                                                            format: .float3,
+//                                                            offset: offset, bufferIndex: 0)
+//
         vertexDescriptor.layouts[0] = MDLVertexBufferLayout(stride: MemoryLayout<Vertex>.stride)
         
         let mdlMesh = MDLMesh(vertexBuffer: vertexBuffer,
                               vertexCount: vertexData.count,
                               descriptor: vertexDescriptor,
                               submeshes: [submesh])
+        //mdlMesh.addNormals(withAttributeNamed: MDLVertexAttributeNormal,
+        //                   creaseThreshold: 0.5)
+        mdlMesh.addTangentBasis(forTextureCoordinateAttributeNamed: MDLVertexAttributeTextureCoordinate,
+                                tangentAttributeNamed: MDLVertexAttributeTangent,
+                                bitangentAttributeNamed: MDLVertexAttributeBitangent)
+        
         self.mdlMesh = mdlMesh
         guard let mesh = self.mdlMesh else {
             fatalError("Could not create PolyList: error creating MDLMesh")
@@ -131,6 +145,8 @@ public class BG2PolyList {
         } catch {
             fatalError("Could not create PolyList: error creating MTKMesh")
         }
+        
+        
         
     }
     
@@ -217,8 +233,11 @@ public class BG2PolyList {
             return
         }
         
-        encoder.setVertexBuffer(mesh.vertexBuffers[0].buffer,
-                                offset: 0, index: 0)
+        for (index, vertexBuffer) in mesh.vertexBuffers.enumerated() {
+            encoder.setVertexBuffer(vertexBuffer.buffer,
+                                    offset: 0, index: index)
+        }
+
         encoder.drawIndexedPrimitives(type: .triangle,
                                       indexCount: submesh.indexCount,
                                       indexType: submesh.indexType,
